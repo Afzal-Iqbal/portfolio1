@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Card, VStack, HStack, Badge, Button } from '@astryxdesign/core';
-import { Shield, ShieldAlert, ShieldCheck, Play, RotateCcw, AlertTriangle, ArrowRight } from 'lucide-react';
+import { Card, VStack, HStack, Button } from '@astryxdesign/core';
+import { ShieldAlert, ShieldCheck, Play, RotateCcw } from 'lucide-react';
 import { runReentrancySimulation, SimulationResult } from '../../lib/contractSimulator';
 
 export const SmartContractSimulator: React.FC = () => {
@@ -28,23 +28,23 @@ export const SmartContractSimulator: React.FC = () => {
     <Card
       className="glass-cyber-card"
       style={{
-        padding: '28px',
-        backgroundColor: 'rgba(11, 15, 25, 0.95)',
-        border: '1px solid rgba(0, 245, 255, 0.25)'
+        padding: '24px',
+        backgroundColor: 'var(--cyber-bg-card)',
+        border: '1px solid var(--cyber-border-subtle)'
       }}
     >
       <VStack gap={4}>
         {/* Header */}
-        <HStack justify="between" align="center" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.08)', paddingBottom: '16px' }}>
+        <HStack justify="between" align="center" wrap="wrap" style={{ borderBottom: '1px solid var(--cyber-border-subtle)', paddingBottom: '16px' }}>
           <VStack gap={1}>
             <HStack gap={2} align="center">
               {isGuarded ? <ShieldCheck size={20} color="#10B981" /> : <ShieldAlert size={20} color="#EF4444" />}
-              <h3 style={{ margin: 0, fontSize: '20px', fontWeight: 700, color: '#F8FAFC' }}>
-                Smart Contract Security Sandbox: Reentrancy Guard
+              <h3 style={{ margin: 0, fontSize: '18px', fontWeight: 800, color: 'var(--cyber-text-primary)' }}>
+                EVM Reentrancy Guard Simulator
               </h3>
             </HStack>
-            <p style={{ margin: 0, fontSize: '13px', color: '#94A3B8' }}>
-              Interactive EVM call-stack simulator testing OpenZeppelin ReentrancyGuard vs. recursive fallback drains.
+            <p style={{ margin: 0, fontSize: '13px', color: 'var(--cyber-text-secondary)' }}>
+              Interactive call-stack engine demonstrating OpenZeppelin reentrancy protection vs. recursive drains.
             </p>
           </VStack>
 
@@ -62,9 +62,9 @@ export const SmartContractSimulator: React.FC = () => {
                 borderRadius: '8px',
                 backgroundColor: isGuarded ? 'rgba(16, 185, 129, 0.15)' : 'rgba(239, 68, 68, 0.15)',
                 border: isGuarded ? '1px solid #10B981' : '1px solid #EF4444',
-                color: isGuarded ? '#34D399' : '#F87171',
+                color: isGuarded ? '#10B981' : '#EF4444',
                 fontSize: '12px',
-                fontWeight: 600,
+                fontWeight: 700,
                 cursor: 'pointer'
               }}
             >
@@ -74,27 +74,29 @@ export const SmartContractSimulator: React.FC = () => {
         </HStack>
 
         {/* Live On-Chain State Meter */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '16px' }}>
           <div
             style={{
               padding: '16px',
               borderRadius: '10px',
-              backgroundColor: 'rgba(15, 23, 42, 0.7)',
-              border: '1px solid rgba(0, 245, 255, 0.2)'
+              backgroundColor: 'var(--cyber-inner-box)',
+              border: '1px solid var(--cyber-border-subtle)'
             }}
           >
-            <span style={{ fontSize: '11px', color: '#94A3B8', fontFamily: 'monospace' }}>VAULT PROTOCOL BALANCE</span>
+            <span style={{ fontSize: '11px', color: 'var(--cyber-text-muted)', fontFamily: 'monospace', fontWeight: 700 }}>
+              VAULT PROTOCOL BALANCE
+            </span>
             <div
               style={{
                 fontSize: '24px',
-                fontWeight: 800,
-                color: vaultBalance > 0 ? '#00F5FF' : '#EF4444',
+                fontWeight: 900,
+                color: vaultBalance > 0 ? 'var(--cyber-cyan)' : '#EF4444',
                 marginTop: '4px'
               }}
             >
               {vaultBalance.toFixed(1)} ETH
             </div>
-            <span style={{ fontSize: '11px', color: '#64748B' }}>
+            <span style={{ fontSize: '11px', color: 'var(--cyber-text-muted)' }}>
               {vaultBalance === 0 ? '⚠️ DRAINED BY ATTACKER' : 'Protected in Escrow'}
             </span>
           </div>
@@ -103,22 +105,24 @@ export const SmartContractSimulator: React.FC = () => {
             style={{
               padding: '16px',
               borderRadius: '10px',
-              backgroundColor: 'rgba(15, 23, 42, 0.7)',
-              border: '1px solid rgba(239, 68, 68, 0.2)'
+              backgroundColor: 'var(--cyber-inner-box)',
+              border: '1px solid var(--cyber-border-subtle)'
             }}
           >
-            <span style={{ fontSize: '11px', color: '#94A3B8', fontFamily: 'monospace' }}>ATTACKER CONTRACT BALANCE</span>
+            <span style={{ fontSize: '11px', color: 'var(--cyber-text-muted)', fontFamily: 'monospace', fontWeight: 700 }}>
+              ATTACKER BALANCE
+            </span>
             <div
               style={{
                 fontSize: '24px',
-                fontWeight: 800,
-                color: attackerBalance > 1.0 ? '#EF4444' : '#E2E8F0',
+                fontWeight: 900,
+                color: attackerBalance > 1.0 ? '#EF4444' : 'var(--cyber-text-primary)',
                 marginTop: '4px'
               }}
             >
               {attackerBalance.toFixed(1)} ETH
             </div>
-            <span style={{ fontSize: '11px', color: '#64748B' }}>
+            <span style={{ fontSize: '11px', color: 'var(--cyber-text-muted)' }}>
               {attackerBalance > 1.0 ? '🚨 STOLEN FROM VAULT' : 'Initial deposited funds'}
             </span>
           </div>
@@ -127,22 +131,24 @@ export const SmartContractSimulator: React.FC = () => {
             style={{
               padding: '16px',
               borderRadius: '10px',
-              backgroundColor: 'rgba(15, 23, 42, 0.7)',
-              border: '1px solid rgba(255, 255, 255, 0.1)'
+              backgroundColor: 'var(--cyber-inner-box)',
+              border: '1px solid var(--cyber-border-subtle)'
             }}
           >
-            <span style={{ fontSize: '11px', color: '#94A3B8', fontFamily: 'monospace' }}>SIMULATED GAS USAGE</span>
-            <div style={{ fontSize: '24px', fontWeight: 800, color: '#10B981', marginTop: '4px' }}>
+            <span style={{ fontSize: '11px', color: 'var(--cyber-text-muted)', fontFamily: 'monospace', fontWeight: 700 }}>
+              SIMULATED GAS USAGE
+            </span>
+            <div style={{ fontSize: '24px', fontWeight: 900, color: '#10B981', marginTop: '4px' }}>
               {simulation ? `${simulation.totalGasUsed.toLocaleString()} gas` : '0 gas'}
             </div>
-            <span style={{ fontSize: '11px', color: '#64748B' }}>
+            <span style={{ fontSize: '11px', color: 'var(--cyber-text-muted)' }}>
               {simulation ? (isGuarded ? 'Revert prevented waste' : 'High gas consumption') : 'Awaiting execution'}
             </span>
           </div>
         </div>
 
         {/* Action Controls */}
-        <HStack gap={3} align="center">
+        <HStack gap={3} align="center" wrap="wrap">
           <Button
             label={isRunning ? 'Executing Call Frames...' : 'Simulate Reentrancy Exploit'}
             variant="primary"
@@ -168,9 +174,9 @@ export const SmartContractSimulator: React.FC = () => {
                 borderRadius: '8px',
                 backgroundColor: simulation.success ? 'rgba(16, 185, 129, 0.12)' : 'rgba(239, 68, 68, 0.12)',
                 border: `1px solid ${simulation.success ? '#10B981' : '#EF4444'}`,
-                color: simulation.success ? '#34D399' : '#F87171',
+                color: simulation.success ? '#10B981' : '#EF4444',
                 fontSize: '13px',
-                fontWeight: 600
+                fontWeight: 700
               }}
             >
               {simulation.message}
@@ -178,9 +184,9 @@ export const SmartContractSimulator: React.FC = () => {
 
             <div
               style={{
-                backgroundColor: '#070A10',
+                backgroundColor: 'var(--cyber-inner-box)',
                 borderRadius: '8px',
-                border: '1px solid rgba(0, 245, 255, 0.15)',
+                border: '1px solid var(--cyber-border-subtle)',
                 padding: '14px',
                 fontFamily: 'Fira Code, monospace',
                 fontSize: '12px',
@@ -188,25 +194,26 @@ export const SmartContractSimulator: React.FC = () => {
                 overflowY: 'auto'
               }}
             >
-              <div style={{ color: '#64748B', marginBottom: '8px' }}>// EVM EXECUTION CALL-STACK TRACE:</div>
+              <div style={{ color: 'var(--cyber-text-muted)', marginBottom: '8px' }}>// EVM EXECUTION CALL-STACK TRACE:</div>
               {simulation.callFrames.map((frame) => (
                 <div
                   key={frame.id}
                   style={{
                     padding: '8px 10px',
-                    marginLeft: `${frame.depth * 18}px`,
-                    borderLeft: `2px solid ${frame.status === 'reverted' ? '#EF4444' : '#00F5FF'}`,
+                    marginLeft: `${frame.depth * 14}px`,
+                    borderLeft: `2px solid ${frame.status === 'reverted' ? '#EF4444' : 'var(--cyber-cyan)'}`,
                     marginBottom: '6px',
-                    backgroundColor: frame.status === 'reverted' ? 'rgba(239, 68, 68, 0.08)' : 'rgba(255, 255, 255, 0.02)'
+                    backgroundColor: frame.status === 'reverted' ? 'rgba(239, 68, 68, 0.08)' : 'rgba(0, 0, 0, 0.05)',
+                    borderRadius: '4px'
                   }}
                 >
                   <HStack justify="between" align="center">
-                    <span style={{ color: frame.status === 'reverted' ? '#F87171' : '#38BDF8', fontWeight: 600 }}>
+                    <span style={{ color: frame.status === 'reverted' ? '#EF4444' : 'var(--cyber-cyan)', fontWeight: 700 }}>
                       [Depth {frame.depth}] {frame.action}
                     </span>
-                    <span style={{ fontSize: '11px', color: '#64748B' }}>{frame.gasUsed} gas</span>
+                    <span style={{ fontSize: '11px', color: 'var(--cyber-text-muted)' }}>{frame.gasUsed} gas</span>
                   </HStack>
-                  <div style={{ color: '#94A3B8', marginTop: '2px', fontSize: '11px' }}>{frame.log}</div>
+                  <div style={{ color: 'var(--cyber-text-secondary)', marginTop: '2px', fontSize: '11px' }}>{frame.log}</div>
                 </div>
               ))}
             </div>

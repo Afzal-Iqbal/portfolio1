@@ -1,6 +1,6 @@
 import React from 'react';
-import { VStack, HStack, Card, Badge, Button } from '@astryxdesign/core';
-import { Award, GraduationCap, CheckCircle2, ExternalLink, ShieldCheck, BookOpen } from 'lucide-react';
+import { VStack, HStack, Card, Badge } from '@astryxdesign/core';
+import { Award, GraduationCap, CheckCircle2 } from 'lucide-react';
 import { getCertifications, getProfile } from '../../lib/content';
 
 export const CredentialsSection: React.FC = () => {
@@ -8,21 +8,21 @@ export const CredentialsSection: React.FC = () => {
   const profile = getProfile();
 
   return (
-    <section id="credentials" style={{ padding: '64px 0', position: 'relative', zIndex: 1 }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-        <VStack gap={6}>
+    <section id="credentials" style={{ padding: '48px 0', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px' }}>
+        <VStack gap={5}>
           {/* Section Header */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <HStack gap={2} align="center">
-              <Award size={16} color="#F59E0B" />
+              <Award size={16} color="var(--cyber-amber)" />
               <span
                 style={{
                   fontSize: '12px',
                   fontFamily: 'monospace',
                   textTransform: 'uppercase',
-                  color: '#F59E0B',
+                  color: 'var(--cyber-amber)',
                   letterSpacing: '1.5px',
-                  fontWeight: 600
+                  fontWeight: 700
                 }}
               >
                 Academic Honors &amp; Verified Certifications
@@ -31,9 +31,9 @@ export const CredentialsSection: React.FC = () => {
 
             <h2
               style={{
-                fontSize: 'clamp(28px, 3.5vw, 42px)',
-                fontWeight: 800,
-                color: '#F8FAFC',
+                fontSize: 'clamp(26px, 3.5vw, 40px)',
+                fontWeight: 900,
+                color: 'var(--cyber-text-primary)',
                 margin: 0,
                 letterSpacing: '-1px'
               }}
@@ -41,8 +41,8 @@ export const CredentialsSection: React.FC = () => {
               Academic Excellence &amp; Industry Credentials
             </h2>
 
-            <p style={{ fontSize: '15px', color: '#94A3B8', margin: 0, maxWidth: '640px' }}>
-              Academic rigor from Pakistan&apos;s premier engineering university combined with recognized international credentials in AI, Blockchain, and Full-Stack Systems.
+            <p style={{ fontSize: '15px', color: 'var(--cyber-text-secondary)', margin: 0, maxWidth: '680px', lineHeight: 1.6 }}>
+              Academic foundation from Pakistan&apos;s premier engineering university combined with recognized credentials in AI, Blockchain, and Full-Stack Systems.
             </p>
           </div>
 
@@ -50,28 +50,27 @@ export const CredentialsSection: React.FC = () => {
           <Card
             className="glass-cyber-card"
             style={{
-              padding: '28px',
-              backgroundColor: 'rgba(15, 23, 42, 0.9)',
-              border: '1px solid rgba(245, 158, 11, 0.3)',
-              boxShadow: '0 8px 32px rgba(245, 158, 11, 0.1)'
+              padding: '24px',
+              backgroundColor: 'var(--cyber-bg-card)',
+              border: '1px solid var(--cyber-border-subtle)'
             }}
           >
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px', alignItems: 'center' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '28px', alignItems: 'center' }}>
               <VStack gap={2}>
                 <HStack gap={2} align="center">
-                  <GraduationCap size={22} color="#F59E0B" />
-                  <span style={{ fontSize: '12px', fontWeight: 700, color: '#F59E0B', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                    Prestigious Merit Scholarship
+                  <GraduationCap size={22} color="var(--cyber-amber)" />
+                  <span style={{ fontSize: '12px', fontWeight: 700, color: 'var(--cyber-amber)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                    100% Merit Scholarship Award
                   </span>
                 </HStack>
-                <h3 style={{ margin: 0, fontSize: '22px', fontWeight: 800, color: '#F8FAFC' }}>
+                <h3 style={{ margin: 0, fontSize: '20px', fontWeight: 800, color: 'var(--cyber-text-primary)' }}>
                   {profile.university.name}
                 </h3>
-                <span style={{ fontSize: '14px', color: '#CBD5E1', fontWeight: 500 }}>
+                <span style={{ fontSize: '13px', color: 'var(--cyber-cyan)', fontWeight: 600 }}>
                   {profile.university.degree} ({profile.university.years})
                 </span>
-                <p style={{ margin: 0, fontSize: '13px', color: '#94A3B8', lineHeight: 1.5 }}>
-                  {profile.university.scholarship}. Awarded 100% full tuition scholarship based on entrance ranking and continuous academic excellence.
+                <p style={{ margin: 0, fontSize: '13px', color: 'var(--cyber-text-secondary)', lineHeight: 1.5 }}>
+                  {profile.university.scholarship}. Awarded full tuition scholarship based on entrance ranking and continuous academic excellence.
                 </p>
               </VStack>
 
@@ -80,11 +79,11 @@ export const CredentialsSection: React.FC = () => {
                 style={{
                   display: 'grid',
                   gridTemplateColumns: 'repeat(4, 1fr)',
-                  gap: '12px',
-                  backgroundColor: 'rgba(10, 13, 20, 0.8)',
+                  gap: '8px',
+                  backgroundColor: 'var(--cyber-inner-box)',
                   padding: '16px',
                   borderRadius: '10px',
-                  border: '1px solid rgba(255, 255, 255, 0.08)'
+                  border: '1px solid var(--cyber-border-subtle)'
                 }}
               >
                 {[
@@ -94,8 +93,8 @@ export const CredentialsSection: React.FC = () => {
                   { sem: 'Sem 4', gpa: '3.34' }
                 ].map((item) => (
                   <div key={item.sem} style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '11px', color: '#94A3B8', fontFamily: 'monospace' }}>{item.sem}</div>
-                    <div style={{ fontSize: '18px', fontWeight: 800, color: '#38BDF8', marginTop: '2px' }}>{item.gpa}</div>
+                    <div style={{ fontSize: '11px', color: 'var(--cyber-text-muted)', fontFamily: 'monospace' }}>{item.sem}</div>
+                    <div style={{ fontSize: '17px', fontWeight: 800, color: 'var(--cyber-cyan)', marginTop: '2px' }}>{item.gpa}</div>
                   </div>
                 ))}
               </div>
@@ -104,15 +103,15 @@ export const CredentialsSection: React.FC = () => {
 
           {/* Industry Certifications Grid */}
           <div>
-            <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#F8FAFC', marginBottom: '16px' }}>
-              Industry &amp; Professional Certifications ({certs.length})
+            <h3 style={{ fontSize: '17px', fontWeight: 800, color: 'var(--cyber-text-primary)', marginBottom: '14px' }}>
+              Industry Certifications &amp; Training ({certs.length})
             </h3>
 
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-                gap: '16px'
+                gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+                gap: '14px'
               }}
             >
               {certs.map((cert) => (
@@ -120,9 +119,9 @@ export const CredentialsSection: React.FC = () => {
                   key={cert.id}
                   className="glass-cyber-card"
                   style={{
-                    padding: '20px',
-                    backgroundColor: 'rgba(11, 15, 25, 0.8)',
-                    border: cert.highlight ? '1px solid rgba(0, 245, 255, 0.25)' : '1px solid rgba(255, 255, 255, 0.07)'
+                    padding: '18px',
+                    backgroundColor: 'var(--cyber-bg-card)',
+                    border: cert.highlight ? '1px solid var(--cyber-cyan)' : '1px solid var(--cyber-border-subtle)'
                   }}
                 >
                   <VStack gap={2}>
@@ -130,7 +129,7 @@ export const CredentialsSection: React.FC = () => {
                       <span
                         style={{
                           fontSize: '11px',
-                          color: cert.domain === 'web3' ? '#00F5FF' : cert.domain === 'ai' ? '#C084FC' : '#10B981',
+                          color: cert.domain === 'web3' ? 'var(--cyber-cyan)' : cert.domain === 'ai' ? 'var(--cyber-violet)' : 'var(--cyber-emerald)',
                           fontWeight: 700,
                           textTransform: 'uppercase',
                           fontFamily: 'monospace'
@@ -138,10 +137,10 @@ export const CredentialsSection: React.FC = () => {
                       >
                         {cert.issuer}
                       </span>
-                      <span style={{ fontSize: '11px', color: '#64748B' }}>{cert.issueDate}</span>
+                      <span style={{ fontSize: '11px', color: 'var(--cyber-text-muted)' }}>{cert.issueDate}</span>
                     </HStack>
 
-                    <h4 style={{ margin: 0, fontSize: '15px', fontWeight: 700, color: '#F8FAFC' }}>
+                    <h4 style={{ margin: 0, fontSize: '15px', fontWeight: 700, color: 'var(--cyber-text-primary)' }}>
                       {cert.title}
                     </h4>
 
@@ -153,8 +152,8 @@ export const CredentialsSection: React.FC = () => {
                             fontSize: '10px',
                             padding: '2px 6px',
                             borderRadius: '4px',
-                            backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                            color: '#94A3B8'
+                            backgroundColor: 'var(--cyber-inner-box)',
+                            color: 'var(--cyber-text-secondary)'
                           }}
                         >
                           {skill}

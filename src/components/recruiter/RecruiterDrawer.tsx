@@ -43,35 +43,45 @@ export const RecruiterDrawer: React.FC<RecruiterDrawerProps> = ({ isOpen, onClos
           width: '100%',
           maxWidth: '560px',
           height: '100%',
-          backgroundColor: '#0D111A',
-          borderLeft: '1px solid rgba(0, 245, 255, 0.25)',
-          padding: '32px 28px',
+          backgroundColor: 'var(--cyber-bg-surface)',
+          borderLeft: '1px solid var(--cyber-border-subtle)',
+          padding: '32px 24px',
           overflowY: 'auto',
-          boxShadow: '-12px 0 40px rgba(0, 0, 0, 0.8)'
+          boxShadow: '-12px 0 40px rgba(0, 0, 0, 0.5)'
         }}
         onClick={(e) => e.stopPropagation()}
       >
         <VStack gap={5}>
           {/* Drawer Header */}
-          <HStack justify="between" align="center" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.1)', paddingBottom: '16px' }}>
-            <VStack gap={1}>
-              <HStack gap={2} align="center">
-                <Briefcase size={18} color="#00F5FF" />
-                <h3 style={{ margin: 0, fontSize: '20px', fontWeight: 800, color: '#F8FAFC' }}>
+          <HStack justify="between" align="center" style={{ borderBottom: '1px solid var(--cyber-border-subtle)', paddingBottom: '16px' }}>
+            <HStack gap={3} align="center">
+              <img
+                src="/afzalpic.jpeg"
+                alt="Muhammad Afzal Iqbal"
+                style={{
+                  width: '44px',
+                  height: '44px',
+                  borderRadius: '10px',
+                  objectFit: 'cover',
+                  border: '2px solid var(--cyber-cyan)'
+                }}
+              />
+              <VStack gap={0}>
+                <h3 style={{ margin: 0, fontSize: '18px', fontWeight: 800, color: 'var(--cyber-text-primary)' }}>
                   Recruiter Fast-Track
                 </h3>
-              </HStack>
-              <span style={{ fontSize: '12px', color: '#94A3B8' }}>
-                30-Second Executive Summary &amp; Direct Downloads
-              </span>
-            </VStack>
+                <span style={{ fontSize: '12px', color: 'var(--cyber-text-muted)' }}>
+                  Executive Candidate Summary &bull; 30s View
+                </span>
+              </VStack>
+            </HStack>
 
             <button
               onClick={onClose}
               style={{
-                background: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                color: '#94A3B8',
+                background: 'var(--cyber-inner-box)',
+                border: '1px solid var(--cyber-border-subtle)',
+                color: 'var(--cyber-text-primary)',
                 borderRadius: '8px',
                 padding: '6px',
                 cursor: 'pointer'
@@ -87,7 +97,7 @@ export const RecruiterDrawer: React.FC<RecruiterDrawerProps> = ({ isOpen, onClos
               padding: '16px',
               borderRadius: '10px',
               backgroundColor: 'rgba(0, 245, 255, 0.08)',
-              border: '1px solid rgba(0, 245, 255, 0.3)',
+              border: '1px solid var(--cyber-border-glow)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
@@ -95,8 +105,8 @@ export const RecruiterDrawer: React.FC<RecruiterDrawerProps> = ({ isOpen, onClos
             }}
           >
             <VStack gap={0}>
-              <strong style={{ fontSize: '14px', color: '#00F5FF' }}>Official Academic Resume (PDF)</strong>
-              <span style={{ fontSize: '12px', color: '#94A3B8' }}>Verified NED Scholars format (2.1 MB)</span>
+              <strong style={{ fontSize: '14px', color: 'var(--cyber-cyan)' }}>Current Resume: Muhammad Afzal (PDF)</strong>
+              <span style={{ fontSize: '12px', color: 'var(--cyber-text-secondary)' }}>Updated direct download</span>
             </VStack>
 
             <Button
@@ -109,41 +119,45 @@ export const RecruiterDrawer: React.FC<RecruiterDrawerProps> = ({ isOpen, onClos
 
           {/* Quick Facts Matrix */}
           <VStack gap={2}>
-            <span style={{ fontSize: '11px', color: '#64748B', fontWeight: 700, textTransform: 'uppercase', fontFamily: 'monospace' }}>
+            <span style={{ fontSize: '11px', color: 'var(--cyber-text-muted)', fontWeight: 700, textTransform: 'uppercase', fontFamily: 'monospace' }}>
               Candidate Fast Facts
             </span>
             <div
               style={{
-                backgroundColor: 'rgba(15, 23, 42, 0.6)',
+                backgroundColor: 'var(--cyber-inner-box)',
                 borderRadius: '8px',
-                border: '1px solid rgba(255, 255, 255, 0.06)',
+                border: '1px solid var(--cyber-border-subtle)',
                 padding: '14px'
               }}
             >
               <VStack gap={2}>
                 <HStack justify="between" style={{ fontSize: '13px' }}>
-                  <span style={{ color: '#94A3B8' }}>Full Name:</span>
-                  <span style={{ color: '#F8FAFC', fontWeight: 600 }}>{profile.name}</span>
+                  <span style={{ color: 'var(--cyber-text-muted)' }}>Candidate:</span>
+                  <span style={{ color: 'var(--cyber-text-primary)', fontWeight: 600 }}>{profile.name}</span>
                 </HStack>
                 <HStack justify="between" style={{ fontSize: '13px' }}>
-                  <span style={{ color: '#94A3B8' }}>Institution:</span>
-                  <span style={{ color: '#F8FAFC', fontWeight: 600 }}>NED University (Karachi)</span>
+                  <span style={{ color: 'var(--cyber-text-muted)' }}>University:</span>
+                  <span style={{ color: 'var(--cyber-text-primary)', fontWeight: 600 }}>NED University of Engineering &amp; Technology</span>
                 </HStack>
                 <HStack justify="between" style={{ fontSize: '13px' }}>
-                  <span style={{ color: '#94A3B8' }}>Degree &amp; Class:</span>
-                  <span style={{ color: '#38BDF8', fontWeight: 600 }}>BS Computer Science (2024 - 2028)</span>
+                  <span style={{ color: 'var(--cyber-text-muted)' }}>Degree &amp; Graduation:</span>
+                  <span style={{ color: 'var(--cyber-cyan)', fontWeight: 600 }}>BS Computer Science (Class of 2028)</span>
                 </HStack>
                 <HStack justify="between" style={{ fontSize: '13px' }}>
-                  <span style={{ color: '#94A3B8' }}>Academic Standing:</span>
-                  <span style={{ color: '#10B981', fontWeight: 600 }}>GPA: 3.34 (100% Merit Scholar)</span>
+                  <span style={{ color: 'var(--cyber-text-muted)' }}>Scholarship Standing:</span>
+                  <span style={{ color: 'var(--cyber-emerald)', fontWeight: 600 }}>100% Merit Academic Scholarship (NED Scholars)</span>
                 </HStack>
                 <HStack justify="between" style={{ fontSize: '13px' }}>
-                  <span style={{ color: '#94A3B8' }}>Work Authorization:</span>
-                  <span style={{ color: '#F8FAFC' }}>Open to Remote Global Contracts &amp; Roles</span>
+                  <span style={{ color: 'var(--cyber-text-muted)' }}>Current GPA:</span>
+                  <span style={{ color: 'var(--cyber-text-primary)', fontWeight: 600 }}>3.34 (Above Average / Sem 4)</span>
                 </HStack>
                 <HStack justify="between" style={{ fontSize: '13px' }}>
-                  <span style={{ color: '#94A3B8' }}>Languages:</span>
-                  <span style={{ color: '#F8FAFC' }}>English (Professional), German (A1/A2), Urdu</span>
+                  <span style={{ color: 'var(--cyber-text-muted)' }}>Role Availability:</span>
+                  <span style={{ color: 'var(--cyber-text-primary)' }}>Remote Global Engineering Contracts &amp; Roles</span>
+                </HStack>
+                <HStack justify="between" style={{ fontSize: '13px' }}>
+                  <span style={{ color: 'var(--cyber-text-muted)' }}>Languages:</span>
+                  <span style={{ color: 'var(--cyber-text-primary)' }}>English (Professional), German (A1/A2), Urdu</span>
                 </HStack>
               </VStack>
             </div>
@@ -151,32 +165,32 @@ export const RecruiterDrawer: React.FC<RecruiterDrawerProps> = ({ isOpen, onClos
 
           {/* Core Hiring Strengths */}
           <VStack gap={2}>
-            <span style={{ fontSize: '11px', color: '#64748B', fontWeight: 700, textTransform: 'uppercase', fontFamily: 'monospace' }}>
+            <span style={{ fontSize: '11px', color: 'var(--cyber-text-muted)', fontWeight: 700, textTransform: 'uppercase', fontFamily: 'monospace' }}>
               Why Muhammad Afzal Stands Out
             </span>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13px', color: '#CBD5E1' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13px', color: 'var(--cyber-text-secondary)' }}>
               <div style={{ display: 'flex', gap: '8px' }}>
-                <span style={{ color: '#00F5FF' }}>✓</span>
-                <span><strong>Specialized Web3 Security:</strong> Production familiarity with UUPS proxies, storage layout collision avoidance, and reentrancy mitigation.</span>
+                <span style={{ color: 'var(--cyber-cyan)' }}>✓</span>
+                <span><strong>Specialized Web3 Security:</strong> Production expertise with UUPS upgradeable proxies, storage slot safety, and OpenZeppelin reentrancy mitigation.</span>
               </div>
               <div style={{ display: 'flex', gap: '8px' }}>
-                <span style={{ color: '#C084FC' }}>✓</span>
-                <span><strong>Agentic AI Engineering:</strong> Hands-on builder of multi-agent LLM systems with real research paper cross-referencing ([SEPICP](file:///home/afzal/afzal/resume_afzal.docx.pdf)).</span>
+                <span style={{ color: 'var(--cyber-violet)' }}>✓</span>
+                <span><strong>Agentic AI Engineering:</strong> Architect of multi-agent LLM reasoning systems connecting live student feedback to academic research papers (SEPICP).</span>
               </div>
               <div style={{ display: 'flex', gap: '8px' }}>
-                <span style={{ color: '#10B981' }}>✓</span>
-                <span><strong>Academic Excellence:</strong> 100% merit-based scholarship awardee at NED University with high GPA progression.</span>
+                <span style={{ color: 'var(--cyber-emerald)' }}>✓</span>
+                <span><strong>Academic Excellence:</strong> 100% merit-based scholarship recipient at NED University with high GPA progression.</span>
               </div>
               <div style={{ display: 'flex', gap: '8px' }}>
-                <span style={{ color: '#38BDF8' }}>✓</span>
-                <span><strong>Teaching &amp; Mentorship:</strong> Active CS instructor at Standard Education System with proven ability to communicate complex concepts clearly.</span>
+                <span style={{ color: 'var(--cyber-cyan)' }}>✓</span>
+                <span><strong>Teaching &amp; Mentorship:</strong> Active CS instructor at Standard Education System with proven talent for demystifying complex algorithmic thinking.</span>
               </div>
             </div>
           </VStack>
 
           {/* Quick-Copy Contacts */}
           <VStack gap={2}>
-            <span style={{ fontSize: '11px', color: '#64748B', fontWeight: 700, textTransform: 'uppercase', fontFamily: 'monospace' }}>
+            <span style={{ fontSize: '11px', color: 'var(--cyber-text-muted)', fontWeight: 700, textTransform: 'uppercase', fontFamily: 'monospace' }}>
               Direct Contact Channels
             </span>
             <VStack gap={2}>
@@ -187,17 +201,17 @@ export const RecruiterDrawer: React.FC<RecruiterDrawerProps> = ({ isOpen, onClos
                   justifyContent: 'space-between',
                   padding: '8px 12px',
                   borderRadius: '6px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)'
+                  backgroundColor: 'var(--cyber-inner-box)',
+                  border: '1px solid var(--cyber-border-subtle)'
                 }}
               >
                 <HStack gap={2} align="center">
                   <Mail size={14} color="#00F5FF" />
-                  <span style={{ fontSize: '13px', color: '#E2E8F0', fontFamily: 'monospace' }}>{profile.socials.email}</span>
+                  <span style={{ fontSize: '13px', color: 'var(--cyber-text-primary)', fontFamily: 'monospace' }}>{profile.socials.email}</span>
                 </HStack>
                 <button
                   onClick={() => handleCopy(profile.socials.email, 'email')}
-                  style={{ background: 'none', border: 'none', color: '#94A3B8', cursor: 'pointer' }}
+                  style={{ background: 'none', border: 'none', color: 'var(--cyber-text-secondary)', cursor: 'pointer' }}
                   title="Copy email"
                 >
                   {copiedKey === 'email' ? <Check size={14} color="#10B981" /> : <Copy size={14} />}
@@ -211,17 +225,17 @@ export const RecruiterDrawer: React.FC<RecruiterDrawerProps> = ({ isOpen, onClos
                   justifyContent: 'space-between',
                   padding: '8px 12px',
                   borderRadius: '6px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)'
+                  backgroundColor: 'var(--cyber-inner-box)',
+                  border: '1px solid var(--cyber-border-subtle)'
                 }}
               >
                 <HStack gap={2} align="center">
                   <Linkedin size={14} color="#0A66C2" />
-                  <span style={{ fontSize: '13px', color: '#E2E8F0' }}>linkedin.com/in/muhammad-afzal-iqbal-4b26b8323</span>
+                  <span style={{ fontSize: '13px', color: 'var(--cyber-text-primary)' }}>linkedin.com/in/muhammad-afzal-iqbal-4b26b8323</span>
                 </HStack>
                 <button
                   onClick={() => window.open(profile.socials.linkedin, '_blank')}
-                  style={{ background: 'none', border: 'none', color: '#94A3B8', cursor: 'pointer' }}
+                  style={{ background: 'none', border: 'none', color: 'var(--cyber-text-secondary)', cursor: 'pointer' }}
                   title="Open LinkedIn"
                 >
                   <ExternalLink size={14} />
@@ -235,17 +249,17 @@ export const RecruiterDrawer: React.FC<RecruiterDrawerProps> = ({ isOpen, onClos
                   justifyContent: 'space-between',
                   padding: '8px 12px',
                   borderRadius: '6px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)'
+                  backgroundColor: 'var(--cyber-inner-box)',
+                  border: '1px solid var(--cyber-border-subtle)'
                 }}
               >
                 <HStack gap={2} align="center">
                   <Phone size={14} color="#10B981" />
-                  <span style={{ fontSize: '13px', color: '#E2E8F0', fontFamily: 'monospace' }}>{profile.socials.phone}</span>
+                  <span style={{ fontSize: '13px', color: 'var(--cyber-text-primary)', fontFamily: 'monospace' }}>{profile.socials.phone}</span>
                 </HStack>
                 <button
                   onClick={() => handleCopy(profile.socials.phone || '', 'phone')}
-                  style={{ background: 'none', border: 'none', color: '#94A3B8', cursor: 'pointer' }}
+                  style={{ background: 'none', border: 'none', color: 'var(--cyber-text-secondary)', cursor: 'pointer' }}
                   title="Copy phone"
                 >
                   {copiedKey === 'phone' ? <Check size={14} color="#10B981" /> : <Copy size={14} />}

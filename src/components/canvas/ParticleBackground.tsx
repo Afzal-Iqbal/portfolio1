@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { usePersona } from '../../context/PersonaContext';
+import { useTheme } from '../../context/ThemeContext';
 
 interface Particle {
   x: number;
@@ -15,6 +16,7 @@ interface Particle {
 export const ParticleBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const { persona } = usePersona();
+  const { isDark } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -59,15 +61,15 @@ export const ParticleBackground: React.FC = () => {
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseleave', handleMouseLeave);
 
-    // Color definitions based on persona
+    // Color definitions based on persona and theme
     const getColors = () => {
       if (persona === 'web3') {
-        return ['#00F5FF', '#10B981', '#06B6D4']; // Cyan & Emerald
+        return isDark ? ['#00F5FF', '#10B981', '#06B6D4'] : ['#0284C7', '#059669', '#0891B2'];
       }
       if (persona === 'ai') {
-        return ['#8B5CF6', '#C084FC', '#3B82F6']; // Violet & Electric Blue
+        return isDark ? ['#8B5CF6', '#C084FC', '#3B82F6'] : ['#7C3AED', '#A855F7', '#2563EB'];
       }
-      return ['#00F5FF', '#8B5CF6', '#10B981']; // Convergence
+      return isDark ? ['#00F5FF', '#8B5CF6', '#10B981'] : ['#0284C7', '#7C3AED', '#059669'];
     };
 
     // Initialize particles
@@ -97,7 +99,7 @@ export const ParticleBackground: React.FC = () => {
       ctx.clearRect(0, 0, width, height);
 
       // Subtle cyber grid lines in the background
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.015)';
+      ctx.strokeStyle = isDark ? 'rgba(255, 255, 255, 0.015)' : 'rgba(0, 0, 0, 0.025)';
       ctx.lineWidth = 1;
       const gridSize = 80;
       for (let x = 0; x < width; x += gridSize) {
@@ -142,8 +144,10 @@ export const ParticleBackground: React.FC = () => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = p.color;
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = p.color;
+        if (isDark) {
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = p.color;
+        }
         ctx.fill();
         ctx.shadowBlur = 0;
 
@@ -156,17 +160,17 @@ export const ParticleBackground: React.FC = () => {
 
           const maxDist = 140;
           if (cdist < maxDist) {
-            const alpha = (1 - cdist / maxDist) * 0.22;
+            const alpha = (1 - cdist / maxDist) * (isDark ? 0.22 : 0.15);
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
 
             if (persona === 'web3') {
-              ctx.strokeStyle = `rgba(0, 245, 255, ${alpha})`;
+              ctx.strokeStyle = isDark ? `rgba(0, 245, 255, ${alpha})` : `rgba(2, 132, 199, ${alpha})`;
             } else if (persona === 'ai') {
-              ctx.strokeStyle = `rgba(139, 92, 246, ${alpha})`;
+              ctx.strokeStyle = isDark ? `rgba(139, 92, 246, ${alpha})` : `rgba(124, 58, 237, ${alpha})`;
             } else {
-              ctx.strokeStyle = `rgba(16, 185, 129, ${alpha})`;
+              ctx.strokeStyle = isDark ? `rgba(16, 185, 129, ${alpha})` : `rgba(5, 150, 105, ${alpha})`;
             }
 
             ctx.lineWidth = 1;
@@ -179,7 +183,7 @@ export const ParticleBackground: React.FC = () => {
               const py = p.y + (p2.y - p.y) * pulsePos;
               ctx.beginPath();
               ctx.arc(px, py, 1.5, 0, Math.PI * 2);
-              ctx.fillStyle = '#C084FC';
+              ctx.fillStyle = isDark ? '#C084FC' : '#7C3AED';
               ctx.fill();
             }
           }
@@ -197,7 +201,7 @@ export const ParticleBackground: React.FC = () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [persona]);
+  }, [persona, isDark]);
 
   return (
     <canvas
@@ -210,7 +214,10 @@ export const ParticleBackground: React.FC = () => {
         height: '100%',
         zIndex: 0,
         pointerEvents: 'none',
-        background: 'radial-gradient(ellipse at 50% 0%, #0F172A 0%, #0A0D14 70%)'
+        background: isDark
+          ? 'radial-gradient(ellipse at 50% 0%, #0F172A 0%, #0A0D14 70%)'
+          : 'radial-gradient(ellipse at 50% 0%, #FFFFFF 0%, #F1F5F9 70%)',
+        transition: 'background 0.25s ease'
       }}
     />
   );

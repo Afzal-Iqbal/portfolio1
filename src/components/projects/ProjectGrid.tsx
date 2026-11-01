@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { VStack, HStack, Badge } from '@astryxdesign/core';
+import { VStack, HStack } from '@astryxdesign/core';
 import { Layers, Shield, Brain, Zap } from 'lucide-react';
 import { usePersona } from '../../context/PersonaContext';
 import { getProjects } from '../../lib/content';
@@ -10,7 +10,6 @@ export const ProjectGrid: React.FC = () => {
   const { persona } = usePersona();
   const [filter, setFilter] = useState<string>('auto');
 
-  // If user selected a manual filter, use it; otherwise follow persona
   const activePersona: PersonaType | undefined =
     filter === 'auto'
       ? persona
@@ -21,21 +20,21 @@ export const ProjectGrid: React.FC = () => {
   const projects = getProjects(activePersona);
 
   return (
-    <section id="projects" style={{ padding: '64px 0', position: 'relative', zIndex: 1 }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-        <VStack gap={6}>
+    <section id="projects" style={{ padding: '48px 0', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px' }}>
+        <VStack gap={5}>
           {/* Section Header */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <HStack gap={2} align="center">
-              <Layers size={16} color="#00F5FF" />
+              <Layers size={16} color="var(--cyber-cyan)" />
               <span
                 style={{
                   fontSize: '12px',
                   fontFamily: 'monospace',
                   textTransform: 'uppercase',
-                  color: '#00F5FF',
+                  color: 'var(--cyber-cyan)',
                   letterSpacing: '1.5px',
-                  fontWeight: 600
+                  fontWeight: 700
                 }}
               >
                 Production Systems &amp; Protocols
@@ -44,9 +43,9 @@ export const ProjectGrid: React.FC = () => {
 
             <h2
               style={{
-                fontSize: 'clamp(28px, 3.5vw, 42px)',
-                fontWeight: 800,
-                color: '#F8FAFC',
+                fontSize: 'clamp(26px, 3.5vw, 40px)',
+                fontWeight: 900,
+                color: 'var(--cyber-text-primary)',
                 margin: 0,
                 letterSpacing: '-1px'
               }}
@@ -54,14 +53,14 @@ export const ProjectGrid: React.FC = () => {
               Featured Engineering Showcases
             </h2>
 
-            <p style={{ fontSize: '15px', color: '#94A3B8', margin: 0, maxWidth: '640px' }}>
+            <p style={{ fontSize: '15px', color: 'var(--cyber-text-secondary)', margin: 0, maxWidth: '680px', lineHeight: 1.6 }}>
               Deep technical breakdowns of decentralized smart contracts, agentic AI pipelines, and enterprise architectures—auditable, tested, and battle-proven.
             </p>
           </div>
 
           {/* Filter Pills */}
           <HStack gap={2} wrap="wrap" align="center">
-            <span style={{ fontSize: '12px', color: '#64748B', marginRight: '6px' }}>Filter by domain:</span>
+            <span style={{ fontSize: '12px', color: 'var(--cyber-text-muted)', marginRight: '6px' }}>Filter:</span>
             {[
               { id: 'auto', label: `Persona Active (${persona})`, icon: <Zap size={12} /> },
               { id: 'all', label: 'All Projects', icon: <Layers size={12} /> },
@@ -80,9 +79,9 @@ export const ProjectGrid: React.FC = () => {
                   fontSize: '12px',
                   fontWeight: 600,
                   cursor: 'pointer',
-                  border: filter === item.id ? '1px solid #00F5FF' : '1px solid rgba(255, 255, 255, 0.1)',
-                  backgroundColor: filter === item.id ? 'rgba(0, 245, 255, 0.12)' : 'rgba(15, 23, 42, 0.6)',
-                  color: filter === item.id ? '#00F5FF' : '#94A3B8',
+                  border: filter === item.id ? '1px solid var(--cyber-cyan)' : '1px solid var(--cyber-border-subtle)',
+                  backgroundColor: filter === item.id ? 'rgba(0, 245, 255, 0.12)' : 'var(--cyber-inner-box)',
+                  color: filter === item.id ? 'var(--cyber-cyan)' : 'var(--cyber-text-secondary)',
                   transition: 'all 0.15s ease'
                 }}
               >
@@ -96,7 +95,7 @@ export const ProjectGrid: React.FC = () => {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
               gap: '24px',
               width: '100%'
             }}

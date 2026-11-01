@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, VStack, HStack, Badge, Button } from '@astryxdesign/core';
-import { Brain, Sparkles, BookOpen, CheckCircle, ArrowRight, BookCheck, Loader2 } from 'lucide-react';
+import { Brain, Sparkles, BookOpen, CheckCircle, ArrowRight, Loader2 } from 'lucide-react';
 import { runAgenticPedagogyPipeline, AgentStep, AiEvaluationResponse } from '../../lib/aiAgentSimulator';
 
 export const AiAgentSandbox: React.FC = () => {
@@ -34,23 +34,23 @@ export const AiAgentSandbox: React.FC = () => {
     <Card
       className="glass-cyber-card"
       style={{
-        padding: '28px',
-        backgroundColor: 'rgba(11, 15, 25, 0.95)',
-        border: '1px solid rgba(139, 92, 246, 0.25)'
+        padding: '24px',
+        backgroundColor: 'var(--cyber-bg-card)',
+        border: '1px solid var(--cyber-border-subtle)'
       }}
     >
       <VStack gap={4}>
         {/* Header */}
-        <HStack justify="between" align="center" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.08)', paddingBottom: '16px' }}>
+        <HStack justify="between" align="center" wrap="wrap" style={{ borderBottom: '1px solid var(--cyber-border-subtle)', paddingBottom: '16px' }}>
           <VStack gap={1}>
             <HStack gap={2} align="center">
-              <Brain size={20} color="#C084FC" />
-              <h3 style={{ margin: 0, fontSize: '20px', fontWeight: 700, color: '#F8FAFC' }}>
+              <Brain size={20} color="var(--cyber-violet)" />
+              <h3 style={{ margin: 0, fontSize: '18px', fontWeight: 800, color: 'var(--cyber-text-primary)' }}>
                 Agentic AI Sandbox: Research-to-Pedagogy Pipeline (SEPICP)
               </h3>
             </HStack>
-            <p style={{ margin: 0, fontSize: '13px', color: '#94A3B8' }}>
-              Live simulation of the multi-agent LLM reasoning pipeline matching instructional challenges with peer-reviewed educational literature.
+            <p style={{ margin: 0, fontSize: '13px', color: 'var(--cyber-text-secondary)' }}>
+              Live simulation of the multi-agent reasoning loop matching instructional challenges with peer-reviewed literature.
             </p>
           </VStack>
 
@@ -59,7 +59,7 @@ export const AiAgentSandbox: React.FC = () => {
 
         {/* Input & Presets */}
         <VStack gap={2}>
-          <span style={{ fontSize: '12px', color: '#94A3B8', fontWeight: 600 }}>
+          <span style={{ fontSize: '12px', color: 'var(--cyber-text-secondary)', fontWeight: 600 }}>
             Enter Classroom Engagement Challenge or Select a Preset:
           </span>
 
@@ -69,10 +69,10 @@ export const AiAgentSandbox: React.FC = () => {
                 key={idx}
                 onClick={() => setQuery(preset)}
                 style={{
-                  background: query === preset ? 'rgba(139, 92, 246, 0.2)' : 'rgba(255, 255, 255, 0.04)',
-                  border: query === preset ? '1px solid #8B5CF6' : '1px solid rgba(255, 255, 255, 0.08)',
+                  background: query === preset ? 'rgba(139, 92, 246, 0.15)' : 'var(--cyber-inner-box)',
+                  border: query === preset ? '1px solid var(--cyber-violet)' : '1px solid var(--cyber-border-subtle)',
                   borderRadius: '6px',
-                  color: query === preset ? '#C084FC' : '#94A3B8',
+                  color: query === preset ? 'var(--cyber-violet)' : 'var(--cyber-text-secondary)',
                   padding: '5px 10px',
                   fontSize: '11px',
                   cursor: 'pointer',
@@ -88,9 +88,9 @@ export const AiAgentSandbox: React.FC = () => {
             style={{
               display: 'flex',
               gap: '8px',
-              backgroundColor: 'rgba(15, 23, 42, 0.8)',
+              backgroundColor: 'var(--cyber-inner-box)',
               borderRadius: '8px',
-              border: '1px solid rgba(139, 92, 246, 0.3)',
+              border: '1px solid var(--cyber-border-subtle)',
               padding: '6px 12px',
               marginTop: '4px'
             }}
@@ -105,7 +105,7 @@ export const AiAgentSandbox: React.FC = () => {
                 background: 'transparent',
                 border: 'none',
                 outline: 'none',
-                color: '#F8FAFC',
+                color: 'var(--cyber-text-primary)',
                 fontSize: '14px'
               }}
             />
@@ -123,33 +123,33 @@ export const AiAgentSandbox: React.FC = () => {
         {steps.length > 0 && (
           <div
             style={{
-              backgroundColor: '#070A10',
+              backgroundColor: 'var(--cyber-inner-box)',
               borderRadius: '8px',
-              border: '1px solid rgba(139, 92, 246, 0.2)',
+              border: '1px solid var(--cyber-border-subtle)',
               padding: '16px'
             }}
           >
-            <span style={{ fontSize: '11px', color: '#64748B', fontFamily: 'monospace' }}>
+            <span style={{ fontSize: '11px', color: 'var(--cyber-text-muted)', fontFamily: 'monospace' }}>
               // MULTI-AGENT REASONING PIPELINE TRACE:
             </span>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px', marginTop: '10px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '10px', marginTop: '10px' }}>
               {steps.map((st, i) => (
                 <div
                   key={i}
                   style={{
                     padding: '10px',
                     borderRadius: '6px',
-                    backgroundColor: st.status === 'complete' ? 'rgba(16, 185, 129, 0.08)' : st.status === 'in-progress' ? 'rgba(139, 92, 246, 0.12)' : 'rgba(255, 255, 255, 0.02)',
-                    border: `1px solid ${st.status === 'complete' ? '#10B981' : st.status === 'in-progress' ? '#8B5CF6' : 'rgba(255, 255, 255, 0.06)'}`
+                    backgroundColor: st.status === 'complete' ? 'rgba(16, 185, 129, 0.08)' : st.status === 'in-progress' ? 'rgba(139, 92, 246, 0.12)' : 'transparent',
+                    border: `1px solid ${st.status === 'complete' ? '#10B981' : st.status === 'in-progress' ? 'var(--cyber-violet)' : 'var(--cyber-border-subtle)'}`
                   }}
                 >
                   <HStack justify="between" align="center">
-                    <span style={{ fontSize: '12px', fontWeight: 600, color: st.status === 'complete' ? '#34D399' : st.status === 'in-progress' ? '#C084FC' : '#64748B' }}>
+                    <span style={{ fontSize: '12px', fontWeight: 700, color: st.status === 'complete' ? '#10B981' : st.status === 'in-progress' ? 'var(--cyber-violet)' : 'var(--cyber-text-muted)' }}>
                       Step {i + 1}: {st.name}
                     </span>
                     {st.status === 'complete' && <CheckCircle size={13} color="#10B981" />}
                   </HStack>
-                  <div style={{ fontSize: '11px', color: '#94A3B8', marginTop: '4px' }}>{st.details}</div>
+                  <div style={{ fontSize: '11px', color: 'var(--cyber-text-secondary)', marginTop: '4px' }}>{st.details}</div>
                 </div>
               ))}
             </div>
@@ -165,41 +165,41 @@ export const AiAgentSandbox: React.FC = () => {
                 padding: '14px',
                 borderRadius: '8px',
                 backgroundColor: 'rgba(139, 92, 246, 0.1)',
-                border: '1px solid rgba(139, 92, 246, 0.3)'
+                border: '1px solid var(--cyber-violet)'
               }}
             >
-              <span style={{ fontSize: '11px', color: '#C084FC', fontFamily: 'monospace', textTransform: 'uppercase' }}>
+              <span style={{ fontSize: '11px', color: 'var(--cyber-violet)', fontFamily: 'monospace', textTransform: 'uppercase', fontWeight: 700 }}>
                 Cognitive Bottleneck Diagnosed:
               </span>
-              <p style={{ margin: '4px 0 0 0', fontSize: '14px', color: '#F1F5F9', fontWeight: 500 }}>
+              <p style={{ margin: '4px 0 0 0', fontSize: '14px', color: 'var(--cyber-text-primary)', fontWeight: 600 }}>
                 {result.cognitiveBottleneck}
               </p>
             </div>
 
             {/* Matched Academic Papers */}
             <VStack gap={2}>
-              <span style={{ fontSize: '12px', color: '#94A3B8', fontWeight: 600 }}>
+              <span style={{ fontSize: '12px', color: 'var(--cyber-text-secondary)', fontWeight: 600 }}>
                 Matched Peer-Reviewed Literature (Zero Hallucination Retrieval):
               </span>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '12px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
                 {result.matchedPapers.map((paper, i) => (
                   <div
                     key={i}
                     style={{
                       padding: '12px',
                       borderRadius: '8px',
-                      backgroundColor: 'rgba(15, 23, 42, 0.6)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)'
+                      backgroundColor: 'var(--cyber-inner-box)',
+                      border: '1px solid var(--cyber-border-subtle)'
                     }}
                   >
                     <HStack gap={1} align="center">
-                      <BookOpen size={14} color="#00F5FF" />
-                      <span style={{ fontSize: '13px', fontWeight: 700, color: '#E2E8F0' }}>{paper.title}</span>
+                      <BookOpen size={14} color="var(--cyber-cyan)" />
+                      <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--cyber-text-primary)' }}>{paper.title}</span>
                     </HStack>
-                    <div style={{ fontSize: '11px', color: '#64748B', marginTop: '2px' }}>
+                    <div style={{ fontSize: '11px', color: 'var(--cyber-text-muted)', marginTop: '2px' }}>
                       {paper.authors} — <em>{paper.venue}</em> ({paper.year})
                     </div>
-                    <div style={{ fontSize: '12px', color: '#38BDF8', marginTop: '6px' }}>
+                    <div style={{ fontSize: '12px', color: 'var(--cyber-cyan)', marginTop: '6px' }}>
                       <strong>Key Finding:</strong> {paper.keyInsight}
                     </div>
                   </div>
@@ -209,7 +209,7 @@ export const AiAgentSandbox: React.FC = () => {
 
             {/* Actionable Recommendations */}
             <VStack gap={2}>
-              <span style={{ fontSize: '12px', color: '#94A3B8', fontWeight: 600 }}>
+              <span style={{ fontSize: '12px', color: 'var(--cyber-text-secondary)', fontWeight: 600 }}>
                 Actionable Faculty Protocol:
               </span>
               {result.actionableRecommendations.map((rec, i) => (
@@ -219,11 +219,11 @@ export const AiAgentSandbox: React.FC = () => {
                     display: 'flex',
                     gap: '8px',
                     fontSize: '13px',
-                    color: '#CBD5E1',
+                    color: 'var(--cyber-text-primary)',
                     padding: '8px 12px',
-                    backgroundColor: 'rgba(255, 255, 255, 0.02)',
+                    backgroundColor: 'var(--cyber-inner-box)',
                     borderRadius: '6px',
-                    borderLeft: '2px solid #10B981'
+                    borderLeft: '3px solid #10B981'
                   }}
                 >
                   <ArrowRight size={14} color="#10B981" style={{ marginTop: '2px', flexShrink: 0 }} />

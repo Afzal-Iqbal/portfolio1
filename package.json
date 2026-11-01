@@ -4,18 +4,22 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "node init && vite",
+    "build": "node init && tsc -b && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@astryxdesign/core": "^0.7.5",
     "@astryxdesign/theme-neutral": "^0.7.5",
     "@stylexjs/stylex": "^0.19.1",
+    "@types/three": "^0.187.0",
+    "dotenv": "^8.2.0",
     "framer-motion": "^12.43.0",
     "lucide-react": "^0.477.0",
+    "node-fetch": "^3.3.2",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "three": "^0.187.0"
   },
   "devDependencies": {
     "@astryxdesign/cli": "^0.7.5",

@@ -10,21 +10,21 @@ export const StoriesTimeline: React.FC = () => {
   const visits = getVisits();
 
   return (
-    <section id="stories" style={{ padding: '64px 0', position: 'relative', zIndex: 1 }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+    <section id="stories" style={{ padding: '48px 0', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px' }}>
         <VStack gap={5}>
           {/* Section Header */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <HStack gap={2} align="center">
-              <History size={16} color="#00F5FF" />
+              <History size={16} color="var(--cyber-cyan)" />
               <span
                 style={{
                   fontSize: '12px',
                   fontFamily: 'monospace',
                   textTransform: 'uppercase',
-                  color: '#00F5FF',
+                  color: 'var(--cyber-cyan)',
                   letterSpacing: '1.5px',
-                  fontWeight: 600
+                  fontWeight: 700
                 }}
               >
                 Immutable Changelog &amp; Field Work
@@ -33,9 +33,9 @@ export const StoriesTimeline: React.FC = () => {
 
             <h2
               style={{
-                fontSize: 'clamp(28px, 3.5vw, 42px)',
-                fontWeight: 800,
-                color: '#F8FAFC',
+                fontSize: 'clamp(26px, 3.5vw, 40px)',
+                fontWeight: 900,
+                color: 'var(--cyber-text-primary)',
                 margin: 0,
                 letterSpacing: '-1px'
               }}
@@ -43,27 +43,27 @@ export const StoriesTimeline: React.FC = () => {
               Day Stories &amp; Industrial Observations
             </h2>
 
-            <p style={{ fontSize: '15px', color: '#94A3B8', margin: 0, maxWidth: '640px' }}>
-              Proof of continuous execution. A transparent micro-devlog of smart contract deployments, research breakthroughs, and technical industrial visits.
+            <p style={{ fontSize: '15px', color: 'var(--cyber-text-secondary)', margin: 0, maxWidth: '680px', lineHeight: 1.6 }}>
+              A transparent devlog of smart contract deployments, research benchmarks, and engineering observation tours.
             </p>
           </div>
 
           {/* Tab Selector */}
-          <HStack gap={3}>
+          <HStack gap={2} wrap="wrap">
             <button
               onClick={() => setTab('stories')}
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px',
-                padding: '8px 18px',
+                padding: '8px 16px',
                 borderRadius: '8px',
                 fontSize: '13px',
                 fontWeight: 600,
                 cursor: 'pointer',
-                backgroundColor: tab === 'stories' ? 'rgba(0, 245, 255, 0.15)' : 'rgba(15, 23, 42, 0.6)',
-                border: tab === 'stories' ? '1px solid #00F5FF' : '1px solid rgba(255, 255, 255, 0.1)',
-                color: tab === 'stories' ? '#00F5FF' : '#94A3B8',
+                backgroundColor: tab === 'stories' ? 'rgba(0, 245, 255, 0.15)' : 'var(--cyber-inner-box)',
+                border: tab === 'stories' ? '1px solid var(--cyber-cyan)' : '1px solid var(--cyber-border-subtle)',
+                color: tab === 'stories' ? 'var(--cyber-cyan)' : 'var(--cyber-text-secondary)',
                 transition: 'all 0.15s ease'
               }}
             >
@@ -77,14 +77,14 @@ export const StoriesTimeline: React.FC = () => {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px',
-                padding: '8px 18px',
+                padding: '8px 16px',
                 borderRadius: '8px',
                 fontSize: '13px',
                 fontWeight: 600,
                 cursor: 'pointer',
-                backgroundColor: tab === 'visits' ? 'rgba(16, 185, 129, 0.15)' : 'rgba(15, 23, 42, 0.6)',
-                border: tab === 'visits' ? '1px solid #10B981' : '1px solid rgba(255, 255, 255, 0.1)',
-                color: tab === 'visits' ? '#10B981' : '#94A3B8',
+                backgroundColor: tab === 'visits' ? 'rgba(16, 185, 129, 0.15)' : 'var(--cyber-inner-box)',
+                border: tab === 'visits' ? '1px solid var(--cyber-emerald)' : '1px solid var(--cyber-border-subtle)',
+                color: tab === 'visits' ? 'var(--cyber-emerald)' : 'var(--cyber-text-secondary)',
                 transition: 'all 0.15s ease'
               }}
             >
@@ -95,7 +95,7 @@ export const StoriesTimeline: React.FC = () => {
 
           {/* Stories List */}
           {tab === 'stories' && (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '20px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '16px' }}>
               {stories.map((story) => (
                 <StoryCard key={story.id} story={story} />
               ))}
@@ -104,44 +104,44 @@ export const StoriesTimeline: React.FC = () => {
 
           {/* Industrial Visits List */}
           {tab === 'visits' && (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '20px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '16px' }}>
               {visits.map((visit) => (
                 <Card
                   key={visit.id}
                   className="glass-cyber-card"
                   style={{
-                    padding: '24px',
-                    backgroundColor: 'rgba(11, 15, 25, 0.85)',
-                    border: '1px solid rgba(16, 185, 129, 0.2)'
+                    padding: '20px',
+                    backgroundColor: 'var(--cyber-bg-card)',
+                    border: '1px solid var(--cyber-border-subtle)'
                   }}
                 >
                   <VStack gap={3}>
                     <HStack justify="between" align="center">
                       <HStack gap={1} align="center">
-                        <Building2 size={15} color="#10B981" />
-                        <span style={{ fontSize: '12px', fontWeight: 600, color: '#34D399', fontFamily: 'monospace' }}>
+                        <Building2 size={15} color="var(--cyber-emerald)" />
+                        <span style={{ fontSize: '12px', fontWeight: 700, color: 'var(--cyber-emerald)', fontFamily: 'monospace' }}>
                           {visit.host}
                         </span>
                       </HStack>
                       <HStack gap={1} align="center">
-                        <Calendar size={12} color="#64748B" />
-                        <span style={{ fontSize: '11px', color: '#64748B' }}>{visit.date}</span>
+                        <Calendar size={12} color="var(--cyber-text-muted)" />
+                        <span style={{ fontSize: '11px', color: 'var(--cyber-text-muted)' }}>{visit.date}</span>
                       </HStack>
                     </HStack>
 
-                    <h4 style={{ margin: 0, fontSize: '18px', fontWeight: 700, color: '#F8FAFC' }}>
+                    <h4 style={{ margin: 0, fontSize: '17px', fontWeight: 800, color: 'var(--cyber-text-primary)' }}>
                       {visit.title}
                     </h4>
 
                     <HStack gap={1} align="center">
-                      <MapPin size={13} color="#94A3B8" />
-                      <span style={{ fontSize: '12px', color: '#94A3B8' }}>{visit.location}</span>
+                      <MapPin size={13} color="var(--cyber-text-muted)" />
+                      <span style={{ fontSize: '12px', color: 'var(--cyber-text-muted)' }}>{visit.location}</span>
                     </HStack>
 
                     <VStack gap={1} style={{ marginTop: '4px' }}>
-                      <span style={{ fontSize: '11px', color: '#64748B', fontWeight: 600 }}>KEY ENGINEERING OBSERVATIONS:</span>
+                      <span style={{ fontSize: '11px', color: 'var(--cyber-text-muted)', fontWeight: 700 }}>KEY ENGINEERING OBSERVATIONS:</span>
                       {visit.keyLearnings.map((learning, i) => (
-                        <div key={i} style={{ display: 'flex', gap: '8px', fontSize: '12px', color: '#CBD5E1', lineHeight: 1.5 }}>
+                        <div key={i} style={{ display: 'flex', gap: '8px', fontSize: '12px', color: 'var(--cyber-text-secondary)', lineHeight: 1.5 }}>
                           <CheckCircle2 size={13} color="#10B981" style={{ marginTop: '2px', flexShrink: 0 }} />
                           <span>{learning}</span>
                         </div>

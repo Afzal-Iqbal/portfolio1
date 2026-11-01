@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, VStack, HStack, Badge } from '@astryxdesign/core';
-import { GitCommit, Tag, Calendar } from 'lucide-react';
+import { Card, VStack, HStack } from '@astryxdesign/core';
+import { Calendar } from 'lucide-react';
 import type { DayStory } from '../../types/content';
 
 interface StoryCardProps {
@@ -13,8 +13,8 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story }) => {
       className="glass-cyber-card"
       style={{
         padding: '20px',
-        backgroundColor: 'rgba(11, 15, 25, 0.85)',
-        border: '1px solid rgba(0, 245, 255, 0.15)',
+        backgroundColor: 'var(--cyber-bg-card)',
+        border: '1px solid var(--cyber-border-subtle)',
         width: '100%'
       }}
     >
@@ -24,8 +24,8 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story }) => {
             <span
               style={{
                 fontFamily: 'Fira Code, monospace',
-                fontSize: '12px',
-                color: '#00F5FF',
+                fontSize: '11px',
+                color: 'var(--cyber-cyan)',
                 fontWeight: 700,
                 backgroundColor: 'rgba(0, 245, 255, 0.1)',
                 padding: '2px 8px',
@@ -40,8 +40,8 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story }) => {
                 fontSize: '11px',
                 fontFamily: 'monospace',
                 textTransform: 'uppercase',
-                color: story.category === 'web3' ? '#00F5FF' : story.category === 'ai' ? '#C084FC' : '#10B981',
-                fontWeight: 600
+                color: story.category === 'web3' ? 'var(--cyber-cyan)' : story.category === 'ai' ? 'var(--cyber-violet)' : 'var(--cyber-emerald)',
+                fontWeight: 700
               }}
             >
               [{story.category}]
@@ -49,18 +49,18 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story }) => {
           </HStack>
 
           <HStack gap={1} align="center">
-            <Calendar size={12} color="#64748B" />
-            <span style={{ fontSize: '11px', color: '#64748B', fontFamily: 'monospace' }}>
+            <Calendar size={12} color="var(--cyber-text-muted)" />
+            <span style={{ fontSize: '11px', color: 'var(--cyber-text-muted)', fontFamily: 'monospace' }}>
               {story.date}
             </span>
           </HStack>
         </HStack>
 
-        <h4 style={{ margin: 0, fontSize: '17px', fontWeight: 700, color: '#F8FAFC' }}>
+        <h4 style={{ margin: 0, fontSize: '16px', fontWeight: 800, color: 'var(--cyber-text-primary)' }}>
           {story.title}
         </h4>
 
-        <p style={{ margin: 0, fontSize: '13px', lineHeight: 1.6, color: '#CBD5E1' }}>
+        <p style={{ margin: 0, fontSize: '13px', lineHeight: 1.6, color: 'var(--cyber-text-secondary)' }}>
           {story.content}
         </p>
 
@@ -72,8 +72,8 @@ export const StoryCard: React.FC<StoryCardProps> = ({ story }) => {
                 fontSize: '10px',
                 padding: '2px 6px',
                 borderRadius: '4px',
-                backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                color: '#94A3B8',
+                backgroundColor: 'var(--cyber-inner-box)',
+                color: 'var(--cyber-text-muted)',
                 fontFamily: 'monospace'
               }}
             >

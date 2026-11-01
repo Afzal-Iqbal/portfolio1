@@ -2,7 +2,6 @@ node_modules
 dist
 dist-ssr
 *.local
-.vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
@@ -11,3 +10,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+config.bat

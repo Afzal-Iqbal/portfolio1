@@ -2,32 +2,55 @@
 @import '@astryxdesign/core/astryx.css';
 @import '@astryxdesign/theme-neutral/theme.css';
 
-/* Cyber-Tech Dark Theme & Glow Custom Properties */
-:root {
+/* Dark Theme Tokens (Default) */
+html[data-theme="dark"] {
   --cyber-bg: #0A0D14;
   --cyber-bg-surface: rgba(13, 17, 26, 0.85);
-  --cyber-bg-card: rgba(18, 24, 38, 0.72);
-  --cyber-border-subtle: rgba(0, 245, 255, 0.12);
-  --cyber-border-glow: rgba(0, 245, 255, 0.35);
+  --cyber-bg-card: rgba(18, 24, 38, 0.75);
+  --cyber-border-subtle: rgba(0, 245, 255, 0.14);
+  --cyber-border-glow: rgba(0, 245, 255, 0.4);
   --cyber-cyan: #00F5FF;
-  --cyber-cyan-glow: 0 0 20px rgba(0, 245, 255, 0.4);
+  --cyber-cyan-glow: 0 0 20px rgba(0, 245, 255, 0.35);
   --cyber-emerald: #10B981;
-  --cyber-emerald-glow: 0 0 20px rgba(16, 185, 129, 0.4);
   --cyber-violet: #8B5CF6;
-  --cyber-violet-glow: 0 0 20px rgba(139, 92, 246, 0.4);
   --cyber-amber: #F59E0B;
+  --cyber-text-primary: #F8FAFC;
+  --cyber-text-secondary: #94A3B8;
+  --cyber-text-muted: #64748B;
+  --cyber-inner-box: rgba(15, 23, 42, 0.7);
+  --cyber-nav-bg: rgba(10, 13, 20, 0.88);
 }
 
-/* Global resets & typography */
+/* Light Theme Tokens (Modern Swiss/Linear Minimalist) */
+html[data-theme="light"] {
+  --cyber-bg: #F8FAFC;
+  --cyber-bg-surface: rgba(255, 255, 255, 0.95);
+  --cyber-bg-card: #FFFFFF;
+  --cyber-border-subtle: rgba(15, 23, 42, 0.1);
+  --cyber-border-glow: rgba(0, 180, 216, 0.5);
+  --cyber-cyan: #0284C7;
+  --cyber-cyan-glow: 0 0 16px rgba(2, 132, 199, 0.25);
+  --cyber-emerald: #059669;
+  --cyber-violet: #7C3AED;
+  --cyber-amber: #D97706;
+  --cyber-text-primary: #0F172A;
+  --cyber-text-secondary: #475569;
+  --cyber-text-muted: #64748B;
+  --cyber-inner-box: #F1F5F9;
+  --cyber-nav-bg: rgba(255, 255, 255, 0.9);
+}
+
+/* Global Resets & Typography */
 html, body {
   background-color: var(--cyber-bg);
-  color: #E2E8F0;
+  color: var(--cyber-text-primary);
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   min-height: 100vh;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 /* Monospace fonts for code & terminal */
@@ -35,7 +58,7 @@ code, pre, .font-mono {
   font-family: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* Glassmorphism card utility */
+/* Glassmorphism Card Utility */
 .glass-cyber-card {
   background: var(--cyber-bg-card) !important;
   backdrop-filter: blur(16px);
@@ -43,6 +66,10 @@ code, pre, .font-mono {
   border: 1px solid var(--cyber-border-subtle) !important;
   border-radius: 14px !important;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.08);
+}
+
+html[data-theme="dark"] .glass-cyber-card {
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
@@ -52,37 +79,47 @@ code, pre, .font-mono {
   transform: translateY(-2px);
 }
 
-/* Cyber text gradients */
+/* Cyber Text Gradients */
 .text-gradient-cyan {
-  background: linear-gradient(135deg, #00F5FF 0%, #3B82F6 100%);
+  background: linear-gradient(135deg, var(--cyber-cyan) 0%, #3B82F6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-ai {
-  background: linear-gradient(135deg, #C084FC 0%, #8B5CF6 50%, #3B82F6 100%);
+  background: linear-gradient(135deg, #C084FC 0%, var(--cyber-violet) 50%, #3B82F6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-web3 {
-  background: linear-gradient(135deg, #00F5FF 0%, #10B981 100%);
+  background: linear-gradient(135deg, var(--cyber-cyan) 0%, var(--cyber-emerald) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Custom scrollbar */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0A0D14;
+  background: var(--cyber-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 245, 255, 0.2);
+  background: var(--cyber-border-subtle);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 245, 255, 0.4);
+  background: var(--cyber-border-glow);
+}
+
+/* Mobile-First Responsive Utilities */
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+  .mobile-full-width {
+    width: 100% !important;
+  }
 }

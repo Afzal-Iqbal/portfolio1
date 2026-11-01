@@ -1,1 +1,1 @@
-{"root":["./src/App.tsx","./src/main.tsx","./src/lib/content.ts","./src/types/content.ts"],"version":"5.7.3"}
+{"root":["./src/App.tsx","./src/main.tsx","./src/components/navigation/Navbar.tsx","./src/components/navigation/PersonaSwitcher.tsx","./src/context/PersonaContext.tsx","./src/lib/content.ts","./src/types/content.ts"],"version":"5.7.3"}

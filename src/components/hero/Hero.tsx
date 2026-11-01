@@ -311,6 +311,33 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRecruiterDrawer }) => {
                 <TerminalWidget />
               )}
             </div>
+
+            {/* Quick architectural discovery prompt under 3D / Shell */}
+            <div style={{ marginTop: '14px', textAlign: 'center' }}>
+              <a
+                href="#architecture"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  fontSize: '12px',
+                  color: 'var(--cyber-cyan)',
+                  textDecoration: 'none',
+                  fontFamily: 'monospace',
+                  fontWeight: 600,
+                  padding: '5px 14px',
+                  borderRadius: '20px',
+                  backgroundColor: 'rgba(0, 245, 255, 0.08)',
+                  border: '1px solid rgba(0, 245, 255, 0.25)',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                <span>Curious what this 3D engine represents?</span>
+                <span style={{ textDecoration: 'underline', color: 'var(--cyber-emerald)' }}>
+                  Read Behind the Scenes Blueprint &darr;
+                </span>
+              </a>
+            </div>
           </div>
         </div>
       </div>

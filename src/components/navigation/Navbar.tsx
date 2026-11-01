@@ -94,6 +94,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRecruiterDrawer }) => {
 
             {/* Desktop Navigation Links */}
             <HStack gap={4} align="center" style={{ display: 'none' }} className="hide-on-mobile">
+              <a href="#architecture" style={{ color: 'var(--cyber-cyan)', textDecoration: 'none', fontSize: '13px', fontWeight: 700 }}>
+                Architecture
+              </a>
               <a href="#sandboxes" style={{ color: 'var(--cyber-text-secondary)', textDecoration: 'none', fontSize: '13px', fontWeight: 600 }}>
                 Proof-of-Work
               </a>
@@ -238,6 +241,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRecruiterDrawer }) => {
                 Jump to Section
               </span>
               {[
+                { label: '3D Architecture Blueprint (Behind the Scenes)', href: '#architecture' },
                 { label: 'Interactive Sandboxes (Proof-of-Work)', href: '#sandboxes' },
                 { label: 'Featured Architecture Showcases', href: '#projects' },
                 { label: 'Academic Honors & Certifications', href: '#credentials' },

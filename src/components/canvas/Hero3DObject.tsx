@@ -1171,10 +1171,27 @@ export const Hero3DObject: React.FC = () => {
           </div>
 
           {/* Modal Footer CTA */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '12px', borderTop: '1px solid var(--cyber-border-subtle)' }}>
-            <span style={{ fontSize: '10px', color: 'var(--cyber-text-muted)', fontFamily: 'monospace' }}>
-              NED University CS '28 &bull; 100% Merit Scholar
-            </span>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '12px', borderTop: '1px solid var(--cyber-border-subtle)', flexWrap: 'wrap', gap: '8px' }}>
+            <button
+              onClick={() => {
+                setShowMeaningModal(false);
+                document.getElementById('architecture')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              style={{
+                backgroundColor: 'transparent',
+                color: 'var(--cyber-cyan)',
+                border: '1px solid var(--cyber-cyan)',
+                padding: '6px 12px',
+                borderRadius: '6px',
+                fontSize: '11px',
+                fontWeight: 700,
+                cursor: 'pointer',
+                fontFamily: 'monospace'
+              }}
+            >
+              Read Full Architectural Deep-Dive &darr;
+            </button>
+
             <button
               onClick={() => {
                 setShowMeaningModal(false);

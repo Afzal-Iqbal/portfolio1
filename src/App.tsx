@@ -4,6 +4,7 @@ import { PersonaProvider } from './context/PersonaContext';
 import { ParticleBackground } from './components/canvas/ParticleBackground';
 import { Navbar } from './components/navigation/Navbar';
 import { Hero } from './components/hero/Hero';
+import { ArchitectureSection } from './components/canvas/ArchitectureSection';
 import { SandboxesSection } from './components/sandboxes/SandboxesSection';
 import { ProjectGrid } from './components/projects/ProjectGrid';
 import { CredentialsSection } from './components/credentials/CredentialsSection';
@@ -30,7 +31,10 @@ export default function App() {
             {/* 1. Hero: Portrait, Pitch, Actions, and Interactive 3D Core / Shell */}
             <Hero onOpenRecruiterDrawer={() => setIsRecruiterDrawerOpen(true)} />
 
-            {/* 2. Top Impact (80%): In-Browser Proof-of-Work Sandboxes (Smart Contract & Agentic AI) */}
+            {/* 2. Behind the Scenes: The Decentralized Synaptic Engine Architectural Breakdown */}
+            <ArchitectureSection />
+
+            {/* 3. Top Impact (80%): In-Browser Proof-of-Work Sandboxes (Smart Contract & Agentic AI) */}
             <SandboxesSection />
 
             {/* 3. Featured Architecture Showcases */}

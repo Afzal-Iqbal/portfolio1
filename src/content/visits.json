@@ -1,0 +1,41 @@
+[
+  {
+    "id": "visit-003",
+    "title": "National Incubation Center & Tech Park Observation",
+    "location": "Karachi, Pakistan",
+    "date": "October 2026",
+    "host": "National Incubation Center (NIC) / NED Technology Park",
+    "keyLearnings": [
+      "Observed early-stage AI startup infrastructure and model deployment pipelines on edge devices.",
+      "Engaged in technical roundtable discussions on cross-border Web3 payment rails and regulatory compliance.",
+      "Gained firsthand insights into production monitoring and high-concurrency microservice scaling."
+    ],
+    "category": "industry-tour"
+  },
+  {
+    "id": "visit-002",
+    "title": "Enterprise Cloud Data Center Technical Tour",
+    "location": "Sindh Industrial Zone, Karachi",
+    "date": "May 2026",
+    "host": "Tier-3 Telecom Cloud Facility",
+    "keyLearnings": [
+      "Inspected server rack topography, redundant power grid failover, and hardware security modules (HSMs).",
+      "Studied fiber optic backbones, DDoS mitigation hardware, and cooling efficiency architectures (PUE < 1.3).",
+      "Connected enterprise data center standards with private blockchain validator requirements."
+    ],
+    "category": "tech-observation"
+  },
+  {
+    "id": "visit-001",
+    "title": "NED University Annual CS & AI Research Symposium",
+    "location": "NED University Auditorium",
+    "date": "December 2025",
+    "host": "Department of CS & IT, NED University",
+    "keyLearnings": [
+      "Presented preliminary research on predictive student engagement modeling (SEPICP).",
+      "Attended guest keynote on decentralized consensus mechanisms and zero-knowledge proofs (ZKPs).",
+      "Networked with academic faculty and international alumni working in European and North American AI labs."
+    ],
+    "category": "academic-symposium"
+  }
+]

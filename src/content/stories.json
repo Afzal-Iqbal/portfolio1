@@ -1,0 +1,47 @@
+[
+  {
+    "id": "story-005",
+    "blockNumber": 402,
+    "date": "November 2026",
+    "title": "Architected Dual-Persona Portfolio with Meta Astryx UI",
+    "category": "milestone",
+    "content": "Engineered a high-performance modular portfolio website using React 19 and Meta's Astryx design system (@astryxdesign/core). Integrated live client-side sandboxes for both smart contract security testing and agentic AI prompt evaluation.",
+    "tags": ["Meta Astryx", "React 19", "Web3", "AI", "Portfolio"]
+  },
+  {
+    "id": "story-004",
+    "blockNumber": 384,
+    "date": "October 2026",
+    "title": "Benchmarking SEPICP Agentic Evaluation Latency",
+    "category": "ai",
+    "content": "Optimized the multi-agent reasoning loop in SEPICP. Reduced pedagogical query latency from 3.2s to 980ms while maintaining a 99.4% citation accuracy against indexed academic papers.",
+    "tags": ["Agentic AI", "Optimization", "Python", "LLMs"]
+  },
+  {
+    "id": "story-003",
+    "blockNumber": 356,
+    "date": "September 2026",
+    "title": "Hardhat Simulation of UUPS Proxy Migration",
+    "category": "web3",
+    "content": "Conducted extensive fuzz testing and migration simulation for a UUPS upgradeable vault contract. Verified that storage slots remained collision-free across three sequential contract versions using custom storage gaps.",
+    "tags": ["Solidity", "Hardhat", "UUPS Proxy", "Security"]
+  },
+  {
+    "id": "story-002",
+    "blockNumber": 312,
+    "date": "July 2026",
+    "title": "Earned Google AI Professional Certification",
+    "category": "milestone",
+    "content": "Successfully completed comprehensive Google AI training covering multimodal foundation models, agentic pipelines, and ethical model deployment.",
+    "tags": ["Google AI", "Certification", "Machine Learning"]
+  },
+  {
+    "id": "story-001",
+    "blockNumber": 268,
+    "date": "May 2026",
+    "title": "Stress Testing Oracle XE Concurrency under Simulated Flash Ticket Sale",
+    "category": "university",
+    "content": "Benchmarked row-level locking algorithms on Oracle XE to prevent race conditions during ticket booking. Achieved 1,500 req/sec sustained throughput with zero duplicate reservations.",
+    "tags": ["Oracle XE", "Concurrency", "Database", "Node.js"]
+  }
+]

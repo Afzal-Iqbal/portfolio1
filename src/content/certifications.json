@@ -1,0 +1,74 @@
+[
+  {
+    "id": "blockchain-foundations",
+    "title": "Blockchain: Foundations and Use Cases",
+    "issuer": "ConsenSys / Industry",
+    "issueDate": "August 2026",
+    "domain": "web3",
+    "skills": ["Smart Contracts", "Ethereum", "Consensus Protocols", "Decentralized Protocols", "Cryptography"],
+    "highlight": true
+  },
+  {
+    "id": "google-ai",
+    "title": "Google AI Professional Certificate",
+    "issuer": "Google",
+    "issueDate": "July 2026",
+    "domain": "ai",
+    "skills": ["Generative AI", "LLMs", "Deep Learning Foundations", "Model Evaluation", "Applied AI"],
+    "highlight": true
+  },
+  {
+    "id": "ai-for-everyone",
+    "title": "AI For Everyone",
+    "issuer": "DeepLearning.AI (Andrew Ng)",
+    "issueDate": "April 2025",
+    "domain": "ai",
+    "skills": ["Machine Learning Strategy", "AI Ethics", "Neural Network Workflows", "Business AI"],
+    "highlight": true
+  },
+  {
+    "id": "certified-python-developer",
+    "title": "Certified Python Developer",
+    "issuer": "Industry Certification",
+    "issueDate": "January 2025",
+    "domain": "ai",
+    "skills": ["Python OOP", "Data Structures", "Algorithmic Efficiency", "Async IO", "API Integration"],
+    "highlight": true
+  },
+  {
+    "id": "ibm-sql",
+    "title": "SQL: A Practical Introduction for Querying Databases",
+    "issuer": "IBM",
+    "issueDate": "February 2025",
+    "domain": "data",
+    "skills": ["Relational Queries", "Subqueries", "Joins", "Database Indexing", "Aggregation"],
+    "highlight": false
+  },
+  {
+    "id": "meta-html-css",
+    "title": "HTML and CSS in Depth",
+    "issuer": "Meta",
+    "issueDate": "March 2025",
+    "domain": "web",
+    "skills": ["Semantic HTML5", "Modern CSS Layouts", "Responsive Design", "Accessibility / a11y"],
+    "highlight": false
+  },
+  {
+    "id": "linux-cli",
+    "title": "Command Line in Linux",
+    "issuer": "Linux Foundation / Industry",
+    "issueDate": "July 2026",
+    "domain": "linux",
+    "skills": ["Bash Scripting", "Process Management", "Permissions", "SSH / Networking", "System Admin"],
+    "highlight": false
+  },
+  {
+    "id": "mern-stack-dev",
+    "title": "MERN Stack Professional Certification",
+    "issuer": "Full-Stack Institute",
+    "issueDate": "December 2025",
+    "domain": "web",
+    "skills": ["MongoDB", "Express.js", "React", "Node.js", "RESTful Architecture"],
+    "highlight": true
+  }
+]

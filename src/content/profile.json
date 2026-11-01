@@ -1,0 +1,72 @@
+{
+  "name": "Muhammad Afzal Iqbal",
+  "title": "Web3 Smart Contract Architect & Applied AI Systems Engineer",
+  "tagline": "Architecting secure decentralized protocols, agentic LLM workflows, and modern high-performance web applications.",
+  "university": {
+    "name": "NED University of Engineering and Technology",
+    "department": "Computer Science & Information Technology",
+    "degree": "Bachelor of Science in Computer Science",
+    "years": "2024 - 2028",
+    "gpa": "3.34 (Above Average / Sem 4)",
+    "scholarship": "Full Merit-Based Academic Scholarship — NED SCHOLARS",
+    "scholarshipUrl": "https://nedscholars.org"
+  },
+  "location": "Karachi, Pakistan",
+  "socials": {
+    "linkedin": "https://www.linkedin.com/in/muhammad-afzal-iqbal-4b26b8323",
+    "github": "https://github.com/afzal-iqbal",
+    "email": "afzallinkin@gmail.com",
+    "phone": "+92-304-2279512",
+    "website": "https://nedscholars.org/students/viewall.php"
+  },
+  "stats": [
+    {
+      "label": "Academic Scholarship",
+      "value": "100% Merit",
+      "detail": "NED Scholars Awardee"
+    },
+    {
+      "label": "Core Focus",
+      "value": "Web3 + AI",
+      "detail": "Smart Contracts & Agentic Pipelines"
+    },
+    {
+      "label": "Contract Security",
+      "value": "Reentrancy & UUPS",
+      "detail": "OpenZeppelin Standards"
+    },
+    {
+      "label": "AI Architecture",
+      "value": "Agentic LLMs",
+      "detail": "Research-to-Pedagogy Platform"
+    }
+  ],
+  "bio": {
+    "summary": "Undergraduate Computer Science student at NED University and an active hands-on Software Engineer specializing in Web3 Smart Contracts, Applied Machine Learning, and Full-Stack Engineering. As an active technical builder and consultant, I bridge the gap between blockchain trustlessness and intelligent AI agent workflows.",
+    "web3Focus": "Architecting robust, secure smart contracts (Solidity, Hardhat, Remix) and decentralized applications (dApps). Experienced with upgradeable contract patterns (UUPS/Transparent proxies), reentrancy protection, wallet integrations (Ethers.js), and IPFS decentralized storage.",
+    "aiFocus": "Developing agentic LLM workflows and data-driven pipelines. Experienced in orchestrating multi-agent research evaluation systems, predictive student engagement modeling (SEPICP), and computer vision pipelines (OpenCV, YOLOv8).",
+    "fullStackFocus": "Engineering resilient, modular web applications using React 19, Next.js, Node.js, Django REST Framework, TypeScript, Oracle XE, and Supabase."
+  },
+  "skills": [
+    {
+      "category": "Web3 & Blockchain",
+      "domain": "web3",
+      "items": ["Solidity", "Hardhat", "Remix", "OpenZeppelin", "UUPS Upgradeable Proxies", "Reentrancy Guards", "Ethers.js", "IPFS", "ERC-20/721", "Gas Optimization"]
+    },
+    {
+      "category": "AI & Machine Learning",
+      "domain": "ai",
+      "items": ["Agentic AI Workflows", "LLM Orchestration", "Prompt Engineering", "Python", "Scikit-Learn", "Pandas", "OpenCV", "YOLOv8", "Predictive Analytics"]
+    },
+    {
+      "category": "Full-Stack & Systems",
+      "domain": "fullstack",
+      "items": ["React 19", "Meta Astryx UI", "TypeScript", "Node.js / Express", "Django REST Framework", "MySQL", "Oracle XE", "Supabase", "Docker", "Linux CLI"]
+    },
+    {
+      "category": "Leadership & Mentorship",
+      "domain": "general",
+      "items": ["Programming Instructor (Standard Education System)", "NED Scholars Graduate Fundings Group", "Documentation Lead", "Event Management"]
+    }
+  ]
+}

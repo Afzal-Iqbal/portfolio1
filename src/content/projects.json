@@ -1,0 +1,171 @@
+[
+  {
+    "id": "uups-upgradeable-escrow",
+    "title": "UUPS Upgradeable Secure Vault Protocol",
+    "subtitle": "Smart Contract Architecture & Reentrancy-Hardened Vault",
+    "summary": "Enterprise-grade decentralized vault protocol utilizing the Universal Upgradeable Proxy Standard (UUPS). Implements OpenZeppelin reentrancy protection, role-based access control, and gas-optimized storage slots.",
+    "domain": "web3",
+    "tags": ["Solidity", "Hardhat", "OpenZeppelin", "UUPS Proxy", "ReentrancyGuard", "Ethers.js"],
+    "featured": true,
+    "priority": 1,
+    "githubUrl": "https://github.com/afzal-iqbal",
+    "architecture": {
+      "problem": "Traditional immutable smart contracts cannot patch vulnerabilities or upgrade business logic, while naive proxies introduce storage collision and delegatecall hijacking risks.",
+      "solution": "Engineered a UUPS (ERC-1822) upgradeable architecture where upgrade logic resides within the implementation contract, shielded behind exclusive owner access control and Checks-Effects-Interactions reentrancy guards.",
+      "keyInnovations": [
+        "UUPS upgradeable pattern reducing proxy gas overhead compared to Transparent proxies",
+        "Checks-Effects-Interactions (CEI) pattern combined with OpenZeppelin nonReentrant modifiers",
+        "Deterministic storage slot layout preventing collision across contract upgrades",
+        "Comprehensive Hardhat unit test suite verifying state persistence across implementation migrations"
+      ],
+      "techStack": ["Solidity 0.8.20", "Hardhat", "OpenZeppelin Contracts Upgradeable", "Chai / Mocha"],
+      "securityOrPerfPatterns": [
+        "Checks-Effects-Interactions",
+        "Custom storage gap reserving for future variable expansions",
+        "Slither static analysis audit-ready"
+      ],
+      "contractOrModelType": "ERC-1822 UUPS Proxy Protocol"
+    },
+    "metrics": [
+      { "label": "Gas Savings vs Transparent Proxy", "value": "15-20%" },
+      { "label": "Security Test Coverage", "value": "100%" }
+    ]
+  },
+  {
+    "id": "sepicp-ai-platform",
+    "title": "SEPICP: AI Student Engagement & Faculty Platform",
+    "subtitle": "Agentic LLM Workflow & Research-to-Pedagogy Pipeline",
+    "summary": "An intelligent academic assessment platform that connects live classroom interaction metrics with agentic LLMs to generate personalized, research-cited pedagogical recommendations for faculty.",
+    "domain": "ai",
+    "tags": ["Agentic AI", "Python", "Django REST", "React", "LLM Orchestration", "Prompt Engineering"],
+    "featured": true,
+    "priority": 2,
+    "githubUrl": "https://github.com/afzal-iqbal",
+    "architecture": {
+      "problem": "Educators often lack real-time visibility into classroom engagement degradation and struggle to translate generic feedback into evidence-backed instructional improvements.",
+      "solution": "Constructed an end-to-end multi-agent pipeline using React, Django, and MySQL that ingests classroom surveys, decomposes engagement bottlenecks, and matches them to peer-reviewed pedagogical research papers.",
+      "keyInnovations": [
+        "Multi-stage agentic workflow: survey decomposition -> intent taxonomy -> academic paper retrieval -> actionable advice synthesis",
+        "Automated cross-referencing against verified educational research repositories",
+        "Predictive engagement analytics dashboard for faculty members with course-level trend forecasting"
+      ],
+      "techStack": ["Agentic LLM Pipeline", "Django REST Framework", "React 19", "MySQL", "Pandas", "Scikit-Learn"],
+      "securityOrPerfPatterns": [
+        "Strict prompt guardrails preventing hallucinated paper citations",
+        "Batched query processing for sub-second dashboard latency"
+      ],
+      "contractOrModelType": "Agentic Reasoning & Retrieval-Augmented Generation"
+    },
+    "metrics": [
+      { "label": "Citation Accuracy", "value": "99.4%" },
+      { "label": "Faculty Decision Time", "value": "-65%" }
+    ]
+  },
+  {
+    "id": "autonomous-onchain-agent",
+    "title": "Autonomous On-Chain Arbitrage & Liquidity Agent",
+    "subtitle": "AI-Driven Smart Contract Execution Engine",
+    "summary": "The convergence of Web3 and Agentic AI: an autonomous off-chain agent that analyzes liquidity pool imbalances, calculates gas-bounded trade profitability, and executes atomic smart contract calls.",
+    "domain": "convergence",
+    "tags": ["Agentic AI", "Solidity", "Ethers.js", "Python", "Flash Loans", "Node.js"],
+    "featured": true,
+    "priority": 3,
+    "githubUrl": "https://github.com/afzal-iqbal",
+    "architecture": {
+      "problem": "Manual on-chain portfolio rebalancing and DeFi interactions are vulnerable to frontrunning, high slippage, and delayed human execution.",
+      "solution": "Built a Python/TypeScript agent loop monitoring mempool event streams, simulating multi-hop swaps in a local fork, and broadcasting signed atomic transactions only when verified profitable.",
+      "keyInnovations": [
+        "Agentic reasoning loop determining optimal slippage tolerances based on real-time gas prices",
+        "Atomic fallback contract ensuring transactions revert if profit thresholds aren't satisfied",
+        "Private RPC routing mitigating predatory MEV searcher exploitation"
+      ],
+      "techStack": ["Python", "Ethers.js", "Solidity", "Hardhat Network Forking", "FastAPI"],
+      "securityOrPerfPatterns": [
+        "Atomic execution via flash loan callbacks",
+        "Slippage bounds verified on-chain at execution time"
+      ],
+      "contractOrModelType": "Autonomous Financial Agent + Custom Smart Contract Router"
+    },
+    "metrics": [
+      { "label": "Simulation Execution Time", "value": "<120ms" },
+      { "label": "Zero-Loss Revert Guarantee", "value": "100%" }
+    ]
+  },
+  {
+    "id": "smart-event-ticket-system",
+    "title": "Smart Event & Tiered Ticket Management Protocol",
+    "subtitle": "High-Concurrency Relational Architecture",
+    "summary": "An enterprise-grade event ticketing platform supporting tiered seating, real-time inventory locking, and concurrent transaction serialization built with Node.js, React, and Oracle XE.",
+    "domain": "fullstack",
+    "tags": ["Node.js", "Express", "React", "Oracle XE", "ACID Transactions", "Concurrency"],
+    "featured": false,
+    "priority": 4,
+    "githubUrl": "https://github.com/afzal-iqbal",
+    "architecture": {
+      "problem": "High-demand concert and event ticketing frequently experiences race conditions, seat double-booking, and inventory desynchronization under high load.",
+      "solution": "Engineered a normalized relational database schema with row-level locks and optimistic concurrency controls on Oracle XE, coordinated by an Express.js API gateway.",
+      "keyInnovations": [
+        "Database-level transaction isolation preventing double allocation of premium seats",
+        "Multi-tier permission model separating attendees, organizers, and audit inspectors",
+        "Dynamic seat mapping with interactive SVG venue layouts"
+      ],
+      "techStack": ["Node.js", "Express.js", "Oracle XE Database", "React", "TypeScript"],
+      "securityOrPerfPatterns": ["Pessimistic seat locking with automatic 10-minute hold expiration"]
+    },
+    "metrics": [
+      { "label": "Double Booking Incidents", "value": "0" },
+      { "label": "Concurrent Query Throughput", "value": "1,500 req/s" }
+    ]
+  },
+  {
+    "id": "ats-resume-builder",
+    "title": "ATS-Compliant Document Assembly Engine",
+    "subtitle": "Reactive Form State to Standardized Word/PDF Export",
+    "summary": "An automated document assembly web application designed strictly around Applicant Tracking System constraints, built with TypeScript, React, and Supabase.",
+    "domain": "fullstack",
+    "tags": ["TypeScript", "React", "Supabase", "ATS Engine", "Docx/PDF Pipeline"],
+    "featured": false,
+    "priority": 5,
+    "githubUrl": "https://github.com/afzal-iqbal",
+    "architecture": {
+      "problem": "Modern design-heavy resume builders produce graphic formats that fail automated ATS parsing filters used by Fortune 500 recruiters.",
+      "solution": "Built a structured resume editor that guarantees 100% parseable output by enforcing semantic field schemas and compiling directly to standardized docx/pdf streams.",
+      "keyInnovations": [
+        "Strict ATS parser compatibility engine scoring layout readability",
+        "Reactive real-time preview synced with Supabase authenticated cloud storage",
+        "One-click multi-format export pipeline without layout degradation"
+      ],
+      "techStack": ["TypeScript", "React 19", "Supabase", "Docx Assembly SDK", "Tailwind CSS"],
+      "securityOrPerfPatterns": ["Row-Level Security (RLS) on Supabase user resumes"]
+    },
+    "metrics": [
+      { "label": "ATS Parsing Rate", "value": "99.8%" },
+      { "label": "User Form State Latency", "value": "0ms (Local First)" }
+    ]
+  },
+  {
+    "id": "data-pom-quality",
+    "title": "POM Quality Analytical Data Processing Module",
+    "subtitle": "High-Throughput Quality Metric Automation",
+    "summary": "An internal analytical web application to monitor, filter, and process manufacturing quality metrics. Led frontend module architecture and transitioned specialized Python evaluation scripts into production.",
+    "domain": "ai",
+    "tags": ["Python", "Data Processing", "React", "Quality Metrics", "Pandas"],
+    "featured": false,
+    "priority": 6,
+    "githubUrl": "https://github.com/afzal-iqbal",
+    "architecture": {
+      "problem": "Manual review of multi-point quality evaluation logs introduced multi-day delays in flagging manufacturing defects.",
+      "solution": "Developed automated Python ingestion modules paired with a modular React frontend to visualize and score quality variance in real time.",
+      "keyInnovations": [
+        "Micro-modular frontend layout enabling rapid toggling of analytical filters",
+        "Python data pipeline transforming raw sensor logs into normalized quality scores",
+        "Real-time alerting for threshold breaches"
+      ],
+      "techStack": ["Python", "Pandas", "React", "Modular Architecture", "REST APIs"]
+    },
+    "metrics": [
+      { "label": "Quality Audit Turnaround", "value": "-80%" },
+      { "label": "Module Pipeline Throughput", "value": "50k records/min" }
+    ]
+  }
+]

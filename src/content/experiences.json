@@ -1,0 +1,58 @@
+[
+  {
+    "id": "emu-research",
+    "role": "Full-Stack AI Developer (Collaborative Project)",
+    "organization": "EMU Instructional Research Initiative",
+    "period": "October 2025 – Present",
+    "location": "Karachi, Pakistan",
+    "domain": "ai",
+    "technologies": ["Agentic AI", "Python", "React", "Django REST", "LLM Workflows", "Survey Mechanics"],
+    "description": [
+      "Developed an AI-powered web platform for faculty self-assessment and student engagement prediction, optimizing user interactions across multiple analytical modules.",
+      "Built scalable, engineered interactive survey mechanics to capture student data, feeding directly into agentic AI models based on established academic research papers.",
+      "Engineered prompt evaluation benchmarks to ensure high citation fidelity and eliminate hallucinated pedagogical literature."
+    ]
+  },
+  {
+    "id": "standard-education",
+    "role": "Computer Science & Programming Instructor",
+    "organization": "Standard Education System",
+    "period": "August 2025 – Present",
+    "location": "Karachi, Pakistan",
+    "domain": "teaching",
+    "technologies": ["C", "Python", "Algorithms", "Control Structures", "Machine Thinking", "AI Fundamentals"],
+    "description": [
+      "Instructed 100+ students on fundamental programming concepts, algorithmic control structures, and computational machine thinking.",
+      "Fostered deep conceptual understanding of modern software engineering in the era of rapid AI advancements.",
+      "Developed interactive lesson plans and coding labs to simplify complex data structures into practical problem-solving skills for emerging students."
+    ]
+  },
+  {
+    "id": "pom-quality-experience",
+    "role": "Frontend Co-Lead & Module Developer",
+    "organization": "Data - POM Quality",
+    "period": "June 2025 – Present",
+    "location": "Karachi, Pakistan",
+    "domain": "fullstack",
+    "technologies": ["React", "Python", "Data Processing", "REST APIs", "Modular Architecture"],
+    "description": [
+      "Spearheaded frontend module architecture, managing cross-functional integration to ensure seamless data flow and component alignment between backend APIs and UI layouts.",
+      "Directed technical transition into the processing pipeline by engineering specialized Python modules to optimize data handling and quality evaluation scripts.",
+      "Authored modular UI components enabling non-technical operators to query historical quality records with zero latency."
+    ]
+  },
+  {
+    "id": "ned-scholars-leadership",
+    "role": "Active Scholar & Multi-Group Member",
+    "organization": "NED University Scholars Groups",
+    "period": "2024 – Present",
+    "location": "Karachi, Pakistan",
+    "domain": "web3",
+    "technologies": ["Leadership", "Grant Research", "Technical Writing", "Event Logistics", "Visual Identity"],
+    "description": [
+      "Graduate Fundings Group: Conducted targeted research on global academic grants, Web3 grants, and institutional funding opportunities.",
+      "Event Management Group: Coordinated operational logistics and student registration workflows for campus-wide technical conferences and hackathons.",
+      "Graphics & Documentation Groups: Developed visual identity, brand guidelines, and technical documentation assets for departmental software initiatives."
+    ]
+  }
+]

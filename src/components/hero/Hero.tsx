@@ -9,9 +9,10 @@ import { getProfile } from '../../lib/content';
 
 interface HeroProps {
   onOpenRecruiterDrawer: () => void;
+  onOpenArchitectureModal?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenRecruiterDrawer }) => {
+export const Hero: React.FC<HeroProps> = ({ onOpenRecruiterDrawer, onOpenArchitectureModal }) => {
   const { persona, isWeb3, isAi } = usePersona();
   const profile = getProfile();
   const [interactiveMode, setInteractiveMode] = useState<'3d' | 'terminal'>('3d');
@@ -309,7 +310,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRecruiterDrawer }) => {
                     boxShadow: '0 12px 36px rgba(0, 0, 0, 0.2)'
                   }}
                 >
-                  <Hero3DObject />
+                  <Hero3DObject onOpenArchitectureModal={onOpenArchitectureModal} />
                 </div>
               ) : (
                 <TerminalWidget />
@@ -318,29 +319,29 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRecruiterDrawer }) => {
 
             {/* Quick architectural discovery prompt under 3D / Shell */}
             <div style={{ marginTop: '14px', textAlign: 'center' }}>
-              <a
-                href="#architecture"
+              <button
+                onClick={onOpenArchitectureModal}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '6px',
                   fontSize: '12px',
                   color: 'var(--cyber-cyan)',
-                  textDecoration: 'none',
                   fontFamily: 'monospace',
                   fontWeight: 600,
                   padding: '5px 14px',
                   borderRadius: '20px',
                   backgroundColor: 'rgba(0, 245, 255, 0.08)',
                   border: '1px solid rgba(0, 245, 255, 0.25)',
+                  cursor: 'pointer',
                   transition: 'all 0.2s ease'
                 }}
               >
                 <span>Curious what this 3D engine represents?</span>
                 <span style={{ textDecoration: 'underline', color: 'var(--cyber-emerald)' }}>
-                  Read Behind the Scenes Blueprint &darr;
+                  Read Behind the Scenes Blueprint &rarr;
                 </span>
-              </a>
+              </button>
             </div>
           </div>
         </div>

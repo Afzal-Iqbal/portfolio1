@@ -9,9 +9,10 @@ import type { PersonaType } from '../../types/content';
 
 interface NavbarProps {
   onOpenRecruiterDrawer: () => void;
+  onOpenArchitectureModal?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenRecruiterDrawer }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenRecruiterDrawer, onOpenArchitectureModal }) => {
   const { persona, setPersona } = usePersona();
   const { theme, toggleTheme, isDark } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -95,9 +96,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRecruiterDrawer }) => {
 
             {/* Desktop Navigation Links */}
             <HStack gap={4} align="center" style={{ display: 'none' }} className="hide-on-mobile">
-              <a href="#architecture" style={{ color: 'var(--cyber-cyan)', textDecoration: 'none', fontSize: '13px', fontWeight: 700 }}>
+              <button
+                onClick={onOpenArchitectureModal}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--cyber-cyan)',
+                  fontSize: '13px',
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  padding: 0,
+                  transition: 'opacity 0.2s ease'
+                }}
+              >
                 Architecture
-              </a>
+              </button>
               <a href="#sandboxes" style={{ color: 'var(--cyber-text-secondary)', textDecoration: 'none', fontSize: '13px', fontWeight: 600 }}>
                 Proof-of-Work
               </a>
@@ -247,10 +260,36 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRecruiterDrawer }) => {
             {/* Quick Navigation Anchors */}
             <VStack gap={2} style={{ borderTop: '1px solid var(--cyber-border-subtle)', paddingTop: '16px' }}>
               <span style={{ fontSize: '11px', color: 'var(--cyber-text-muted)', fontWeight: 700, textTransform: 'uppercase', fontFamily: 'monospace' }}>
+                System Architecture
+              </span>
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenArchitectureModal?.();
+                }}
+                style={{
+                  padding: '12px',
+                  borderRadius: '8px',
+                  backgroundColor: 'rgba(0, 245, 255, 0.1)',
+                  border: '1px solid rgba(0, 245, 255, 0.3)',
+                  color: 'var(--cyber-cyan)',
+                  fontSize: '14px',
+                  fontWeight: 700,
+                  textAlign: 'left',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between'
+                }}
+              >
+                <span>3D Architecture Blueprint (Behind the Scenes)</span>
+                <span>&rarr;</span>
+              </button>
+
+              <span style={{ fontSize: '11px', color: 'var(--cyber-text-muted)', fontWeight: 700, textTransform: 'uppercase', fontFamily: 'monospace', marginTop: '8px' }}>
                 Jump to Section
               </span>
               {[
-                { label: '3D Architecture Blueprint (Behind the Scenes)', href: '#architecture' },
                 { label: 'Interactive Sandboxes (Proof-of-Work)', href: '#sandboxes' },
                 { label: 'Featured Architecture Showcases', href: '#projects' },
                 { label: 'Academic Honors & Certifications', href: '#credentials' },

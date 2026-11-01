@@ -99,7 +99,11 @@ const LAYERS_DATA: Record<string, LayerMeta> = {
   }
 };
 
-export const Hero3DObject: React.FC = () => {
+interface Hero3DObjectProps {
+  onOpenArchitectureModal?: () => void;
+}
+
+export const Hero3DObject: React.FC<Hero3DObjectProps> = ({ onOpenArchitectureModal }) => {
   const mountRef = useRef<HTMLDivElement | null>(null);
   const { persona } = usePersona();
   const { isDark } = useTheme();
@@ -915,7 +919,13 @@ export const Hero3DObject: React.FC = () => {
           </button>
 
           <button
-            onClick={() => setShowMeaningModal(true)}
+            onClick={() => {
+              if (onOpenArchitectureModal) {
+                onOpenArchitectureModal();
+              } else {
+                setShowMeaningModal(true);
+              }
+            }}
             title="Read Architectural Meaning & Proofs"
             style={{
               display: 'flex',

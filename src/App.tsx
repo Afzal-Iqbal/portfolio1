@@ -4,7 +4,7 @@ import { PersonaProvider } from './context/PersonaContext';
 import { ParticleBackground } from './components/canvas/ParticleBackground';
 import { Navbar } from './components/navigation/Navbar';
 import { Hero } from './components/hero/Hero';
-import { ArchitectureSection } from './components/canvas/ArchitectureSection';
+import { ArchitectureModal } from './components/canvas/ArchitectureModal';
 import { SandboxesSection } from './components/sandboxes/SandboxesSection';
 import { ProjectGrid } from './components/projects/ProjectGrid';
 import { CredentialsSection } from './components/credentials/CredentialsSection';
@@ -15,6 +15,7 @@ import { RecruiterDrawer } from './components/recruiter/RecruiterDrawer';
 
 export default function App() {
   const [isRecruiterDrawerOpen, setIsRecruiterDrawerOpen] = useState(false);
+  const [isArchitectureModalOpen, setIsArchitectureModalOpen] = useState(false);
 
   return (
     <ThemeProvider>
@@ -24,17 +25,20 @@ export default function App() {
           <ParticleBackground />
 
           {/* Mobile-First Responsive Navigation Bar with Theme & Persona Controls */}
-          <Navbar onOpenRecruiterDrawer={() => setIsRecruiterDrawerOpen(true)} />
+          <Navbar
+            onOpenRecruiterDrawer={() => setIsRecruiterDrawerOpen(true)}
+            onOpenArchitectureModal={() => setIsArchitectureModalOpen(true)}
+          />
 
           {/* Main Application Sections (Organized by 80/20 Impact) */}
           <main style={{ position: 'relative', zIndex: 1 }}>
             {/* 1. Hero: Portrait, Pitch, Actions, and Interactive 3D Core / Shell */}
-            <Hero onOpenRecruiterDrawer={() => setIsRecruiterDrawerOpen(true)} />
+            <Hero
+              onOpenRecruiterDrawer={() => setIsRecruiterDrawerOpen(true)}
+              onOpenArchitectureModal={() => setIsArchitectureModalOpen(true)}
+            />
 
-            {/* 2. Behind the Scenes: The Decentralized Synaptic Engine Architectural Breakdown */}
-            <ArchitectureSection />
-
-            {/* 3. Top Impact (80%): In-Browser Proof-of-Work Sandboxes (Smart Contract & Agentic AI) */}
+            {/* 2. Top Impact (80%): In-Browser Proof-of-Work Sandboxes (Smart Contract & Agentic AI) */}
             <SandboxesSection />
 
             {/* 3. Featured Architecture Showcases */}
@@ -57,6 +61,12 @@ export default function App() {
           <RecruiterDrawer
             isOpen={isRecruiterDrawerOpen}
             onClose={() => setIsRecruiterDrawerOpen(false)}
+          />
+
+          {/* Under the Hood: 3D Architecture Blueprint Modal (Visible only when user requests) */}
+          <ArchitectureModal
+            isOpen={isArchitectureModalOpen}
+            onClose={() => setIsArchitectureModalOpen(false)}
           />
         </div>
       </PersonaProvider>

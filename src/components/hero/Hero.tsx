@@ -293,8 +293,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRecruiterDrawer }) => {
                 <div
                   style={{
                     width: '100%',
-                    maxWidth: '460px',
-                    height: '350px',
+                    maxWidth: '520px',
+                    height: '420px',
                     borderRadius: '16px',
                     backgroundColor: 'var(--cyber-bg-card)',
                     border: '1px solid var(--cyber-border-subtle)',

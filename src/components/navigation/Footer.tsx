@@ -1,6 +1,7 @@
 import React from 'react';
 import { VStack, HStack, Badge } from '@astryxdesign/core';
 import { ArrowUp, Github, Linkedin, Mail } from 'lucide-react';
+import { VisitorBadge } from '../common/VisitorBadge';
 import { getProfile } from '../../lib/content';
 
 export const Footer: React.FC = () => {
@@ -95,10 +96,14 @@ export const Footer: React.FC = () => {
             </HStack>
           </HStack>
 
-          <HStack justify="between" align="center" wrap="wrap" style={{ borderTop: '1px solid var(--cyber-border-subtle)', paddingTop: '16px', fontSize: '12px', color: 'var(--cyber-text-muted)' }}>
+          <HStack justify="between" align="center" wrap="wrap" style={{ borderTop: '1px solid var(--cyber-border-subtle)', paddingTop: '16px', fontSize: '12px', color: 'var(--cyber-text-muted)', gap: '12px' }}>
             <span>
               &copy; {new Date().getFullYear()} Muhammad Afzal Iqbal. Full Academic Merit Scholar at NED University.
             </span>
+
+            {/* Profile Visiting Count in Footer */}
+            <VisitorBadge variant="pill" showLabel={true} />
+
             <span style={{ fontFamily: 'monospace' }}>
               React 19 &bull; Meta Astryx UI &bull; Three.js &bull; StyleX &bull; TypeScript
             </span>

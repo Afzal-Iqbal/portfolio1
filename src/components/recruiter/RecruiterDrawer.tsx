@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Card, VStack, HStack, Badge, Button } from '@astryxdesign/core';
 import { X, Download, Copy, Check, Mail, Phone, Linkedin, ExternalLink, GraduationCap, Award, Briefcase } from 'lucide-react';
+import { VisitorBadge } from '../common/VisitorBadge';
 import { getProfile } from '../../lib/content';
 
 interface RecruiterDrawerProps {
@@ -116,6 +117,9 @@ export const RecruiterDrawer: React.FC<RecruiterDrawerProps> = ({ isOpen, onClos
               onClick={() => window.open('/resume.pdf', '_blank')}
             />
           </div>
+
+          {/* Profile Visiting Traction */}
+          <VisitorBadge variant="card" />
 
           {/* Quick Facts Matrix */}
           <VStack gap={2}>

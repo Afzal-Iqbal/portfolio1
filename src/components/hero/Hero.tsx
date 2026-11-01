@@ -4,6 +4,7 @@ import { Award, ArrowRight, Download, CheckCircle2, Terminal as TerminalIcon, Bo
 import { usePersona } from '../../context/PersonaContext';
 import { TerminalWidget } from '../terminal/TerminalWidget';
 import { Hero3DObject } from '../canvas/Hero3DObject';
+import { VisitorBadge } from '../common/VisitorBadge';
 import { getProfile } from '../../lib/content';
 
 interface HeroProps {
@@ -155,6 +156,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRecruiterDrawer }) => {
                 <Award size={13} />
                 100% Merit Academic Scholarship
               </span>
+
+              {/* Profile Visiting Count */}
+              <VisitorBadge variant="pill" />
             </HStack>
 
             {/* Main Headline */}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { HStack, VStack, Button, Badge } from '@astryxdesign/core';
 import { FileText, Sun, Moon, Menu, X, Shield, Brain, Zap, Download } from 'lucide-react';
 import { PersonaSwitcher } from './PersonaSwitcher';
+import { VisitorBadge } from '../common/VisitorBadge';
 import { usePersona } from '../../context/PersonaContext';
 import { useTheme } from '../../context/ThemeContext';
 import type { PersonaType } from '../../types/content';
@@ -112,7 +113,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRecruiterDrawer }) => {
             </HStack>
 
             {/* Desktop Actions */}
-            <HStack gap={2} align="center">
+            <HStack gap={3} align="center">
+              {/* Profile Visiting Count */}
+              <div className="hide-on-mobile">
+                <VisitorBadge variant="minimal" />
+              </div>
+
               {/* Desktop Persona Switcher */}
               <div className="hide-on-mobile">
                 <PersonaSwitcher />
@@ -234,6 +240,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRecruiterDrawer }) => {
                 ))}
               </div>
             </VStack>
+
+            {/* Profile Visiting Count Card on Mobile */}
+            <VisitorBadge variant="card" />
 
             {/* Quick Navigation Anchors */}
             <VStack gap={2} style={{ borderTop: '1px solid var(--cyber-border-subtle)', paddingTop: '16px' }}>

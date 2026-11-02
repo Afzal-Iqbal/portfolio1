@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { HStack, VStack, Button } from '@astryxdesign/core';
-import { Download, Sun, Moon, Menu, X, Sparkles, Briefcase } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Download, Sun, Moon, Menu, X, Briefcase } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
 interface NavbarProps {
@@ -15,196 +15,223 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRecruiterDrawer }) => {
   const navLinks = [
     { label: 'Projects', href: '#projects' },
     { label: 'Superpowers', href: '#skills' },
-    { label: 'Honors & Certs', href: '#credentials' },
+    { label: 'Honors', href: '#credentials' },
     { label: 'Contact', href: '#contact' }
   ];
 
   return (
-    <header
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 100,
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        backgroundColor: 'var(--cyber-nav-bg)',
-        borderBottom: '1px solid var(--cyber-border-subtle)',
-        padding: '14px 24px',
-        transition: 'all 0.25s ease'
-      }}
-    >
-      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-        <HStack justify="between" align="center" style={{ width: '100%' }}>
-          {/* Brand Logo & Name */}
-          <a href="#" style={{ textDecoration: 'none' }}>
-            <HStack gap={3} align="center">
-              <div
-                style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '12px',
-                  background: 'linear-gradient(135deg, #00F5FF 0%, #D946EF 100%)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontWeight: 900,
-                  color: '#0B0F19',
-                  fontSize: '18px',
-                  boxShadow: '0 0 20px rgba(0, 245, 255, 0.4)',
-                  transition: 'transform 0.2s ease',
-                  flexShrink: 0
-                }}
-              >
-                MA
-              </div>
-
-              <VStack gap={0}>
-                <span
-                  style={{
-                    fontSize: '16px',
-                    fontWeight: 800,
-                    color: 'var(--cyber-text-primary)',
-                    letterSpacing: '-0.3px',
-                    lineHeight: 1.2
-                  }}
-                >
-                  Muhammad Afzal
-                </span>
-                <span style={{ fontSize: '11px', color: '#00F5FF', fontFamily: 'monospace', fontWeight: 600 }}>
-                  Web3 &amp; AI Systems Engineer
-                </span>
-              </VStack>
-            </HStack>
-          </a>
-
-          {/* Desktop Navigation Links (Clean & Spacious) */}
-          <HStack gap={5} align="center" style={{ display: 'none' }} className="hide-on-mobile">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                style={{
-                  color: 'var(--cyber-text-secondary)',
-                  textDecoration: 'none',
-                  fontSize: '14px',
-                  fontWeight: 600,
-                  transition: 'color 0.2s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = '#00F5FF';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = 'var(--cyber-text-secondary)';
-                }}
-              >
-                {link.label}
-              </a>
-            ))}
-          </HStack>
-
-          {/* Action CTAs */}
-          <HStack gap={3} align="center">
-            {/* Theme Toggle Button */}
-            <button
-              onClick={toggleTheme}
-              style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '10px',
-                backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid var(--cyber-border-subtle)',
-                color: isDark ? '#F59E0B' : '#64748B',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                transition: 'all 0.2s ease'
-              }}
-              title="Toggle theme"
-            >
-              {isDark ? <Sun size={17} /> : <Moon size={17} />}
-            </button>
-
-            {/* Recruiter Fast-Track (Desktop) */}
-            <div className="hide-on-mobile">
-              <Button
-                label="Recruiter View"
-                variant="secondary"
-                icon={<Briefcase size={14} />}
-                onClick={onOpenRecruiterDrawer}
-              />
-            </div>
-
-            {/* Vibrant Resume Download Button */}
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-              style={{ textDecoration: 'none' }}
-            >
-              <button
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '9px 18px',
-                  borderRadius: '10px',
-                  background: 'linear-gradient(135deg, #00F5FF 0%, #D946EF 100%)',
-                  border: 'none',
-                  color: '#0B0F19',
-                  fontWeight: 800,
-                  fontSize: '13px',
-                  cursor: 'pointer',
-                  boxShadow: '0 0 20px rgba(0, 245, 255, 0.35)',
-                  transition: 'transform 0.2s ease, box-shadow 0.2s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 0 25px rgba(217, 70, 239, 0.5)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 245, 255, 0.35)';
-                }}
-              >
-                <Download size={15} />
-                <span>Resume</span>
-              </button>
-            </a>
-
-            {/* Mobile Hamburger Toggle */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: '38px',
-                height: '38px',
-                borderRadius: '10px',
-                backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid var(--cyber-border-subtle)',
-                color: 'var(--cyber-text-primary)',
-                cursor: 'pointer'
-              }}
-              className="show-on-mobile"
-            >
-              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </HStack>
-        </HStack>
-
-        {/* Mobile Dropdown Menu */}
-        {mobileMenuOpen && (
+    <header className="navbar-capsule-island">
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+        {/* Brand Logo & Name */}
+        <a
+          href="#"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px',
+            textDecoration: 'none'
+          }}
+        >
           <div
             style={{
-              paddingTop: '16px',
-              borderTop: '1px solid var(--cyber-border-subtle)',
-              marginTop: '14px',
+              width: '34px',
+              height: '34px',
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg, #00F5FF 0%, #D946EF 100%)',
               display: 'flex',
-              flexDirection: 'column',
-              gap: '12px'
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontWeight: 900,
+              color: '#0B0F19',
+              fontSize: '14px',
+              boxShadow: '0 0 15px rgba(0, 245, 255, 0.4)',
+              flexShrink: 0
             }}
+          >
+            MA
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <span
+              style={{
+                fontSize: '14px',
+                fontWeight: 800,
+                color: 'var(--cyber-text-primary)',
+                letterSpacing: '-0.3px',
+                lineHeight: 1.2
+              }}
+            >
+              Afzal Iqbal
+            </span>
+            <span
+              style={{
+                fontSize: '10px',
+                color: 'var(--cyber-cyan)',
+                fontFamily: 'monospace',
+                fontWeight: 600,
+                lineHeight: 1
+              }}
+            >
+              Web3 &bull; AI
+            </span>
+          </div>
+        </a>
+
+        {/* Desktop Navigation Links (Centered, Clean & Spacious) */}
+        <nav
+          className="hide-on-tablet"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '20px'
+          }}
+        >
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              style={{
+                color: 'var(--cyber-text-secondary)',
+                textDecoration: 'none',
+                fontSize: '13px',
+                fontWeight: 600,
+                transition: 'color 0.2s ease',
+                position: 'relative'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'var(--cyber-cyan)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = 'var(--cyber-text-secondary)';
+              }}
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        {/* Action CTAs */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          {/* Theme Toggle Button */}
+          <button
+            onClick={toggleTheme}
+            style={{
+              width: '34px',
+              height: '34px',
+              borderRadius: '50%',
+              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              border: '1px solid var(--cyber-border-subtle)',
+              color: isDark ? '#F59E0B' : '#64748B',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'all 0.2s ease'
+            }}
+            title="Toggle theme"
+          >
+            {isDark ? <Sun size={15} /> : <Moon size={15} />}
+          </button>
+
+          {/* Recruiter Fast-Track (Desktop) */}
+          <button
+            onClick={onOpenRecruiterDrawer}
+            className="hide-on-tablet"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '6px 12px',
+              borderRadius: '9999px',
+              backgroundColor: 'rgba(245, 158, 11, 0.1)',
+              border: '1px solid rgba(245, 158, 11, 0.3)',
+              color: 'var(--cyber-amber)',
+              fontSize: '12px',
+              fontWeight: 600,
+              cursor: 'pointer',
+              transition: 'all 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(245, 158, 11, 0.2)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(245, 158, 11, 0.1)';
+            }}
+          >
+            <Briefcase size={13} />
+            <span>Recruiter</span>
+          </button>
+
+          {/* Vibrant Resume Download Button */}
+          <a
+            href="/resume.pdf"
+            download="Muhammad_Afzal_Iqbal_Resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+            style={{ textDecoration: 'none' }}
+          >
+            <button
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '7px 14px',
+                borderRadius: '9999px',
+                background: 'linear-gradient(135deg, #00F5FF 0%, #D946EF 100%)',
+                border: 'none',
+                color: '#0B0F19',
+                fontWeight: 800,
+                fontSize: '12px',
+                cursor: 'pointer',
+                boxShadow: '0 0 16px rgba(0, 245, 255, 0.35)',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-1px)';
+                e.currentTarget.style.boxShadow = '0 0 22px rgba(217, 70, 239, 0.5)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 0 16px rgba(0, 245, 255, 0.35)';
+              }}
+            >
+              <Download size={13} />
+              <span>Resume</span>
+            </button>
+          </a>
+
+          {/* Mobile Hamburger Toggle */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '34px',
+              height: '34px',
+              borderRadius: '50%',
+              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              border: '1px solid var(--cyber-border-subtle)',
+              color: 'var(--cyber-text-primary)',
+              cursor: 'pointer'
+            }}
+            className="show-on-mobile"
+            aria-label="Toggle Navigation Menu"
+          >
+            {mobileMenuOpen ? <X size={17} /> : <Menu size={17} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Floating Dropdown Menu on Mobile */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -8, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.98 }}
+            transition={{ duration: 0.2 }}
+            className="navbar-capsule-dropdown"
           >
             {navLinks.map((link) => (
               <a
@@ -214,14 +241,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRecruiterDrawer }) => {
                 style={{
                   color: 'var(--cyber-text-primary)',
                   textDecoration: 'none',
-                  fontSize: '15px',
+                  fontSize: '14px',
                   fontWeight: 600,
-                  padding: '8px 0'
+                  padding: '8px 12px',
+                  borderRadius: '10px',
+                  backgroundColor: 'var(--cyber-inner-box)',
+                  transition: 'background-color 0.2s ease'
                 }}
               >
                 {link.label}
               </a>
             ))}
+
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
@@ -231,22 +262,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRecruiterDrawer }) => {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px',
-                padding: '10px',
-                borderRadius: '8px',
-                backgroundColor: 'rgba(255, 255, 255, 0.06)',
-                border: '1px solid var(--cyber-border-subtle)',
-                color: '#00F5FF',
-                fontSize: '14px',
+                padding: '10px 12px',
+                borderRadius: '10px',
+                backgroundColor: 'rgba(245, 158, 11, 0.12)',
+                border: '1px solid rgba(245, 158, 11, 0.35)',
+                color: 'var(--cyber-amber)',
+                fontSize: '13px',
                 fontWeight: 600,
-                cursor: 'pointer'
+                cursor: 'pointer',
+                textAlign: 'left'
               }}
             >
-              <Briefcase size={16} />
+              <Briefcase size={15} />
               <span>Open Recruiter Fast-Track</span>
             </button>
-          </div>
+          </motion.div>
         )}
-      </div>
+      </AnimatePresence>
     </header>
   );
 };

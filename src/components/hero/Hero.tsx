@@ -22,7 +22,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenRecruiterDrawer }) => {
       id="hero"
       style={{
         position: 'relative',
-        padding: '56px 20px 48px 20px',
+        padding: '84px 20px 48px 20px',
         overflow: 'hidden',
         display: 'flex',
         justifyContent: 'center'

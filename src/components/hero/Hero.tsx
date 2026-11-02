@@ -1,350 +1,424 @@
-import React, { useState } from 'react';
-import { VStack, HStack, Card, Button } from '@astryxdesign/core';
-import { Award, ArrowRight, Download, CheckCircle2, Terminal as TerminalIcon, Box } from 'lucide-react';
-import { usePersona } from '../../context/PersonaContext';
-import { TerminalWidget } from '../terminal/TerminalWidget';
-import { Hero3DObject } from '../canvas/Hero3DObject';
+import React from 'react';
+import { VStack, HStack, Button } from '@astryxdesign/core';
+import { motion } from 'framer-motion';
+import { Award, ArrowRight, Download, Mail, ShieldCheck, Bot, Code2, Sparkles, Briefcase } from 'lucide-react';
 import { VisitorBadge } from '../common/VisitorBadge';
-import { getProfile } from '../../lib/content';
 
 interface HeroProps {
-  onOpenRecruiterDrawer: () => void;
+  onOpenRecruiterDrawer?: () => void;
   onOpenArchitectureModal?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenRecruiterDrawer, onOpenArchitectureModal }) => {
-  const { persona, isWeb3, isAi } = usePersona();
-  const profile = getProfile();
-  const [interactiveMode, setInteractiveMode] = useState<'3d' | 'terminal'>('3d');
-
-  const getHeadline = () => {
-    if (isWeb3) {
-      return (
-        <>
-          Architecting <span className="text-gradient-web3">Audit-Grade Smart Contracts</span> &amp; Decentralized Protocols
-        </>
-      );
+export const Hero: React.FC<HeroProps> = ({ onOpenRecruiterDrawer }) => {
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
     }
-    if (isAi) {
-      return (
-        <>
-          Engineering <span className="text-gradient-ai">Agentic LLM Pipelines</span> &amp; Intelligent Multi-Modal Systems
-        </>
-      );
-    }
-    return (
-      <>
-        Where <span className="text-gradient-web3">Web3 Security</span> Meets{' '}
-        <span className="text-gradient-ai">Agentic AI Engineering</span>
-      </>
-    );
-  };
-
-  const getSubheadline = () => {
-    if (isWeb3) {
-      return 'Specializing in UUPS upgradeable proxies, reentrancy-hardened vaults, and gas-optimized EVM smart contracts. Verified 100% test coverage and OpenZeppelin security standards.';
-    }
-    if (isAi) {
-      return 'Orchestrating agentic LLM workflows that translate complex user problems into evidence-backed, research-cited pedagogical solutions. Creator of the SEPICP platform.';
-    }
-    return 'Undergraduate Computer Science student at NED University (class of 2028, full merit scholarship). Bridging the gap between blockchain trustlessness and autonomous agent intelligence.';
   };
 
   return (
-    <section style={{ padding: '32px 0 48px 0', position: 'relative', zIndex: 1 }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 20px' }}>
-        {/* Top Bar on Mobile & Desktop: Afzal's Portrait Card + Quick Profile Badge */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '36px', alignItems: 'center' }}>
-          {/* Left Column: Personal Photo Card & Strategic Elevator Pitch */}
-          <VStack gap={4}>
-            {/* Candidate Identity Header with Afzal's Real Photo */}
-            <HStack gap={3} align="center">
-              <div
-                style={{
-                  position: 'relative',
-                  width: '68px',
-                  height: '68px',
-                  borderRadius: '16px',
-                  padding: '3px',
-                  background: 'linear-gradient(135deg, var(--cyber-cyan), var(--cyber-violet))',
-                  boxShadow: '0 0 20px rgba(0, 245, 255, 0.35)',
-                  flexShrink: 0
-                }}
-              >
-                <img
-                  src="/afzalpic.jpeg"
-                  alt="Muhammad Afzal Iqbal"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    borderRadius: '13px',
-                    objectFit: 'cover'
-                  }}
-                />
-                <span
-                  style={{
-                    position: 'absolute',
-                    bottom: '-2px',
-                    right: '-2px',
-                    width: '14px',
-                    height: '14px',
-                    borderRadius: '50%',
-                    backgroundColor: '#10B981',
-                    border: '2px solid #0A0D14',
-                    boxShadow: '0 0 8px #10B981'
-                  }}
-                  title="Online • Available for Contracts"
-                />
-              </div>
+    <section
+      id="hero"
+      style={{
+        position: 'relative',
+        padding: '56px 20px 48px 20px',
+        overflow: 'hidden',
+        display: 'flex',
+        justifyContent: 'center'
+      }}
+    >
+      {/* Background Ambient Radial Glows */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '20%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '650px',
+          height: '420px',
+          background: 'radial-gradient(ellipse at center, rgba(0, 245, 255, 0.15) 0%, rgba(217, 70, 239, 0.12) 45%, transparent 70%)',
+          filter: 'blur(60px)',
+          pointerEvents: 'none',
+          zIndex: 0
+        }}
+      />
 
-              <VStack gap={0}>
-                <HStack gap={2} align="center">
-                  <h2 style={{ margin: 0, fontSize: '20px', fontWeight: 800, color: 'var(--cyber-text-primary)', letterSpacing: '-0.5px' }}>
-                    Muhammad Afzal Iqbal
-                  </h2>
-                </HStack>
-                <span style={{ fontSize: '13px', color: 'var(--cyber-cyan)', fontWeight: 600 }}>
-                  Web3 Smart Contract Architect &amp; AI Systems Engineer
-                </span>
-                <span style={{ fontSize: '12px', color: 'var(--cyber-text-muted)', fontFamily: 'monospace' }}>
-                  NED University (2024 - 2028) &bull; GPA 3.34
-                </span>
-              </VStack>
-            </HStack>
-
-            {/* Status Pills */}
-            <HStack gap={2} wrap="wrap" align="center">
-              <span
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  padding: '4px 10px',
-                  borderRadius: '20px',
-                  backgroundColor: 'rgba(16, 185, 129, 0.12)',
-                  border: '1px solid rgba(16, 185, 129, 0.3)',
-                  color: 'var(--cyber-emerald)',
-                  fontSize: '12px',
-                  fontWeight: 600
-                }}
-              >
-                <span
-                  style={{
-                    width: '7px',
-                    height: '7px',
-                    borderRadius: '50%',
-                    backgroundColor: '#10B981',
-                    boxShadow: '0 0 8px #10B981'
-                  }}
-                />
-                Available for Remote Contracts
-              </span>
-
-              <span
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  padding: '4px 10px',
-                  borderRadius: '20px',
-                  backgroundColor: 'rgba(245, 158, 11, 0.12)',
-                  border: '1px solid rgba(245, 158, 11, 0.3)',
-                  color: 'var(--cyber-amber)',
-                  fontSize: '12px',
-                  fontWeight: 600
-                }}
-              >
-                <Award size={13} />
-                100% Merit Academic Scholarship
-              </span>
-
-              {/* Profile Visiting Count */}
-              <VisitorBadge variant="pill" />
-            </HStack>
-
-            {/* Main Headline */}
-            <h1
+      <div
+        style={{
+          position: 'relative',
+          zIndex: 1,
+          maxWidth: '960px',
+          width: '100%',
+          margin: '0 auto',
+          textAlign: 'center',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        }}
+      >
+        {/* Animated Avatar with Pulsing Luminous Gradient Ring */}
+        <motion.div
+          initial={{ scale: 0.85, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          style={{ position: 'relative', marginBottom: '24px' }}
+        >
+          <div
+            className="hero-avatar-glow"
+            style={{
+              position: 'relative',
+              width: '130px',
+              height: '130px',
+              borderRadius: '50%',
+              padding: '4px',
+              background: 'linear-gradient(135deg, #00F5FF 0%, #D946EF 50%, #F59E0B 100%)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto'
+            }}
+          >
+            <img
+              src="/afzalpic.jpeg"
+              alt="Muhammad Afzal Iqbal"
               style={{
-                fontSize: 'clamp(28px, 4vw, 48px)',
-                fontWeight: 900,
-                lineHeight: 1.15,
-                color: 'var(--cyber-text-primary)',
-                margin: 0,
-                letterSpacing: '-1px'
+                width: '100%',
+                height: '100%',
+                borderRadius: '50%',
+                objectFit: 'cover',
+                backgroundColor: '#0F172A'
               }}
-            >
-              {getHeadline()}
-            </h1>
-
-            {/* Subheadline */}
-            <p
+            />
+            {/* Live Online / Contract Availability Dot */}
+            <span
               style={{
-                fontSize: '15px',
-                lineHeight: 1.6,
-                color: 'var(--cyber-text-secondary)',
-                margin: 0,
-                maxWidth: '560px'
+                position: 'absolute',
+                bottom: '6px',
+                right: '6px',
+                width: '18px',
+                height: '18px',
+                borderRadius: '50%',
+                backgroundColor: '#10B981',
+                border: '3px solid #0B0F19',
+                boxShadow: '0 0 10px #10B981'
               }}
-            >
-              {getSubheadline()}
-            </p>
-
-            {/* Key Strengths Matrix */}
-            <HStack gap={3} wrap="wrap" align="center">
-              <HStack gap={1} align="center">
-                <CheckCircle2 size={15} color="#10B981" />
-                <span style={{ fontSize: '13px', color: 'var(--cyber-text-primary)', fontWeight: 600 }}>
-                  UUPS Proxy Security
-                </span>
-              </HStack>
-              <HStack gap={1} align="center">
-                <CheckCircle2 size={15} color="#00F5FF" />
-                <span style={{ fontSize: '13px', color: 'var(--cyber-text-primary)', fontWeight: 600 }}>
-                  Agentic AI (SEPICP)
-                </span>
-              </HStack>
-              <HStack gap={1} align="center">
-                <CheckCircle2 size={15} color="#8B5CF6" />
-                <span style={{ fontSize: '13px', color: 'var(--cyber-text-primary)', fontWeight: 600 }}>
-                  React 19 + Astryx UI
-                </span>
-              </HStack>
-            </HStack>
-
-            {/* CTA Buttons */}
-            <HStack gap={3} wrap="wrap" align="center" style={{ paddingTop: '8px' }}>
-              <Button
-                label="Launch Proof-of-Work"
-                variant="primary"
-                icon={<ArrowRight size={15} />}
-                onClick={() => {
-                  document.getElementById('sandboxes')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              />
-              <Button
-                label="Recruiter Fast-Track"
-                variant="secondary"
-                onClick={onOpenRecruiterDrawer}
-              />
-              <Button
-                label="Download Resume"
-                variant="ghost"
-                icon={<Download size={15} />}
-                onClick={() => window.open('/resume.pdf', '_blank')}
-              />
-            </HStack>
-          </VStack>
-
-          {/* Right Column: Toggleable 3D Object or Interactive Terminal */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
-            {/* View Switcher: 3D Object vs Terminal */}
-            <div
-              style={{
-                display: 'flex',
-                gap: '6px',
-                backgroundColor: 'var(--cyber-inner-box)',
-                padding: '4px',
-                borderRadius: '8px',
-                border: '1px solid var(--cyber-border-subtle)',
-                marginBottom: '16px'
-              }}
-            >
-              <button
-                onClick={() => setInteractiveMode('3d')}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  padding: '6px 14px',
-                  borderRadius: '6px',
-                  fontSize: '12px',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  border: 'none',
-                  backgroundColor: interactiveMode === '3d' ? 'var(--cyber-bg-card)' : 'transparent',
-                  color: interactiveMode === '3d' ? 'var(--cyber-cyan)' : 'var(--cyber-text-secondary)',
-                  boxShadow: interactiveMode === '3d' ? '0 2px 8px rgba(0,0,0,0.15)' : 'none'
-                }}
-              >
-                <Box size={14} />
-                <span>Interactive 3D Core</span>
-              </button>
-
-              <button
-                onClick={() => setInteractiveMode('terminal')}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  padding: '6px 14px',
-                  borderRadius: '6px',
-                  fontSize: '12px',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  border: 'none',
-                  backgroundColor: interactiveMode === 'terminal' ? 'var(--cyber-bg-card)' : 'transparent',
-                  color: interactiveMode === 'terminal' ? 'var(--cyber-cyan)' : 'var(--cyber-text-secondary)',
-                  boxShadow: interactiveMode === 'terminal' ? '0 2px 8px rgba(0,0,0,0.15)' : 'none'
-                }}
-              >
-                <TerminalIcon size={14} />
-                <span>Interactive CLI Shell</span>
-              </button>
-            </div>
-
-            {/* Interactive Component Area */}
-            <div style={{ width: '100%', minHeight: '340px', display: 'flex', justifyContent: 'center' }}>
-              {interactiveMode === '3d' ? (
-                <div
-                  style={{
-                    width: '100%',
-                    maxWidth: '520px',
-                    height: '420px',
-                    borderRadius: '16px',
-                    backgroundColor: 'var(--cyber-bg-card)',
-                    border: '1px solid var(--cyber-border-subtle)',
-                    overflow: 'hidden',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: '0 12px 36px rgba(0, 0, 0, 0.2)'
-                  }}
-                >
-                  <Hero3DObject onOpenArchitectureModal={onOpenArchitectureModal} />
-                </div>
-              ) : (
-                <TerminalWidget />
-              )}
-            </div>
-
-            {/* Quick architectural discovery prompt under 3D / Shell */}
-            <div style={{ marginTop: '14px', textAlign: 'center' }}>
-              <button
-                onClick={onOpenArchitectureModal}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  fontSize: '12px',
-                  color: 'var(--cyber-cyan)',
-                  fontFamily: 'monospace',
-                  fontWeight: 600,
-                  padding: '5px 14px',
-                  borderRadius: '20px',
-                  backgroundColor: 'rgba(0, 245, 255, 0.08)',
-                  border: '1px solid rgba(0, 245, 255, 0.25)',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease'
-                }}
-              >
-                <span>Curious what this 3D engine represents?</span>
-                <span style={{ textDecoration: 'underline', color: 'var(--cyber-emerald)' }}>
-                  Read Behind the Scenes Blueprint &rarr;
-                </span>
-              </button>
-            </div>
+              title="Available for Contracts & Engineering Roles"
+            />
           </div>
-        </div>
+        </motion.div>
+
+        {/* Identity & Status Badges Row */}
+        <motion.div
+          initial={{ y: 15, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '8px',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginBottom: '20px'
+          }}
+        >
+          {/* Availability Pill */}
+          <span
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '5px 12px',
+              borderRadius: '20px',
+              backgroundColor: 'rgba(16, 185, 129, 0.12)',
+              border: '1px solid rgba(16, 185, 129, 0.35)',
+              color: 'var(--cyber-emerald)',
+              fontSize: '12px',
+              fontWeight: 700
+            }}
+          >
+            <span
+              style={{
+                width: '7px',
+                height: '7px',
+                borderRadius: '50%',
+                backgroundColor: '#10B981',
+                boxShadow: '0 0 8px #10B981'
+              }}
+            />
+            Available for Contracts
+          </span>
+
+          {/* Scholarship Pill */}
+          <span
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '5px 12px',
+              borderRadius: '20px',
+              backgroundColor: 'rgba(245, 158, 11, 0.12)',
+              border: '1px solid rgba(245, 158, 11, 0.35)',
+              color: 'var(--cyber-amber)',
+              fontSize: '12px',
+              fontWeight: 700
+            }}
+          >
+            <Award size={14} />
+            NED University 100% Merit Scholar
+          </span>
+
+          {/* Profile Visits Counter */}
+          <VisitorBadge variant="pill" />
+        </motion.div>
+
+        {/* Dynamic Bold Typography Headline */}
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <h1
+            style={{
+              fontSize: 'clamp(32px, 5.5vw, 54px)',
+              fontWeight: 900,
+              lineHeight: 1.15,
+              letterSpacing: '-1.5px',
+              margin: '0 0 16px 0',
+              color: 'var(--cyber-text-primary)'
+            }}
+          >
+            Hi, I'm <span className="text-gradient-vibrant">Muhammad Afzal Iqbal</span>
+            <br />
+            <span style={{ fontSize: 'clamp(22px, 3.8vw, 38px)', fontWeight: 800, color: 'var(--cyber-text-primary)' }}>
+              Web3 Smart Contract Architect &amp; AI Systems Engineer
+            </span>
+          </h1>
+        </motion.div>
+
+        {/* Crisp, Concise Elevator Pitch */}
+        <motion.p
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          style={{
+            fontSize: '16px',
+            lineHeight: 1.65,
+            color: 'var(--cyber-text-secondary)',
+            maxWidth: '680px',
+            margin: '0 auto 28px auto'
+          }}
+        >
+          Undergraduate in Computer Science at <strong style={{ color: 'var(--cyber-text-primary)' }}>NED University</strong> (Class of 2028).
+          Specializing in audit-grade EVM smart contracts, UUPS upgradeable proxies, autonomous AI agent pipelines,
+          and high-performance modern web architectures.
+        </motion.p>
+
+        {/* Core Pillars / Superpowers Matrix */}
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '12px',
+            justifyContent: 'center',
+            marginBottom: '36px'
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '8px 14px',
+              borderRadius: '12px',
+              backgroundColor: 'var(--cyber-inner-box)',
+              border: '1px solid var(--cyber-border-subtle)',
+              fontSize: '13px',
+              fontWeight: 600,
+              color: 'var(--cyber-text-primary)'
+            }}
+          >
+            <ShieldCheck size={16} color="#00F5FF" />
+            <span>Solidity &amp; UUPS Upgradeable Proxies</span>
+          </div>
+
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '8px 14px',
+              borderRadius: '12px',
+              backgroundColor: 'var(--cyber-inner-box)',
+              border: '1px solid var(--cyber-border-subtle)',
+              fontSize: '13px',
+              fontWeight: 600,
+              color: 'var(--cyber-text-primary)'
+            }}
+          >
+            <Bot size={16} color="#D946EF" />
+            <span>Autonomous AI Agents &amp; SEPICP</span>
+          </div>
+
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '8px 14px',
+              borderRadius: '12px',
+              backgroundColor: 'var(--cyber-inner-box)',
+              border: '1px solid var(--cyber-border-subtle)',
+              fontSize: '13px',
+              fontWeight: 600,
+              color: 'var(--cyber-text-primary)'
+            }}
+          >
+            <Code2 size={16} color="#10B981" />
+            <span>React 19 + Astryx UI Systems</span>
+          </div>
+        </motion.div>
+
+        {/* High-Impact Action CTAs */}
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '12px',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
+          <button
+            onClick={() => scrollTo('projects')}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '12px 24px',
+              borderRadius: '12px',
+              background: 'linear-gradient(135deg, #00F5FF 0%, #D946EF 100%)',
+              color: '#0B0F19',
+              fontWeight: 700,
+              fontSize: '14px',
+              border: 'none',
+              cursor: 'pointer',
+              boxShadow: '0 4px 20px rgba(0, 245, 255, 0.35)',
+              transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 6px 26px rgba(0, 245, 255, 0.45)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 245, 255, 0.35)';
+            }}
+          >
+            <span>Explore Projects</span>
+            <ArrowRight size={16} />
+          </button>
+
+          <button
+            onClick={() => scrollTo('contact')}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '12px 22px',
+              borderRadius: '12px',
+              backgroundColor: 'var(--cyber-bg-card)',
+              border: '1px solid var(--cyber-border-glow)',
+              color: 'var(--cyber-text-primary)',
+              fontWeight: 600,
+              fontSize: '14px',
+              cursor: 'pointer',
+              boxShadow: '0 2px 10px rgba(0, 0, 0, 0.2)',
+              transition: 'all 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = 'var(--cyber-cyan)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = 'var(--cyber-border-glow)';
+              e.currentTarget.style.transform = 'translateY(0)';
+            }}
+          >
+            <Mail size={16} color="var(--cyber-cyan)" />
+            <span>Get in Touch</span>
+          </button>
+
+          {onOpenRecruiterDrawer && (
+            <button
+              onClick={onOpenRecruiterDrawer}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '12px 20px',
+                borderRadius: '12px',
+                backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                border: '1px solid rgba(245, 158, 11, 0.35)',
+                color: 'var(--cyber-amber)',
+                fontWeight: 600,
+                fontSize: '14px',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(245, 158, 11, 0.18)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(245, 158, 11, 0.1)';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              <Briefcase size={16} />
+              <span>Recruiter Fast-Track</span>
+            </button>
+          )}
+
+          <a
+            href="/resume.pdf"
+            download="Muhammad_Afzal_Iqbal_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '12px 18px',
+              borderRadius: '12px',
+              backgroundColor: 'transparent',
+              border: '1px solid var(--cyber-border-subtle)',
+              color: 'var(--cyber-text-secondary)',
+              fontWeight: 600,
+              fontSize: '14px',
+              textDecoration: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = 'var(--cyber-text-primary)';
+              e.currentTarget.style.borderColor = 'var(--cyber-border-glow)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = 'var(--cyber-text-secondary)';
+              e.currentTarget.style.borderColor = 'var(--cyber-border-subtle)';
+            }}
+          >
+            <Download size={16} />
+            <span>Resume</span>
+          </a>
+        </motion.div>
       </div>
     </section>
   );

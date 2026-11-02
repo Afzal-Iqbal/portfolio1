@@ -55,6 +55,7 @@ export interface Project {
   title: string;
   subtitle: string;
   summary: string;
+  image: string;
   domain: 'web3' | 'ai' | 'convergence' | 'fullstack';
   tags: string[];
   featured: boolean;

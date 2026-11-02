@@ -2,26 +2,30 @@
 @import '@astryxdesign/core/astryx.css';
 @import '@astryxdesign/theme-neutral/theme.css';
 
-/* Dark Theme Tokens (Default) */
+/* Dark Theme Tokens (Default - Vibrant, Bright & Sleek) */
 html[data-theme="dark"] {
-  --cyber-bg: #0A0D14;
-  --cyber-bg-surface: rgba(13, 17, 26, 0.85);
-  --cyber-bg-card: rgba(18, 24, 38, 0.75);
-  --cyber-border-subtle: rgba(0, 245, 255, 0.14);
-  --cyber-border-glow: rgba(0, 245, 255, 0.4);
+  --cyber-bg: #0B0F19;
+  --cyber-bg-surface: rgba(14, 20, 34, 0.85);
+  --cyber-bg-card: rgba(17, 24, 39, 0.78);
+  --cyber-border-subtle: rgba(255, 255, 255, 0.08);
+  --cyber-border-glow: rgba(0, 245, 255, 0.45);
   --cyber-cyan: #00F5FF;
-  --cyber-cyan-glow: 0 0 20px rgba(0, 245, 255, 0.35);
+  --cyber-cyan-glow: 0 0 25px rgba(0, 245, 255, 0.35);
+  --cyber-magenta: #D946EF;
+  --cyber-magenta-glow: 0 0 25px rgba(217, 70, 239, 0.35);
   --cyber-emerald: #10B981;
+  --cyber-emerald-glow: 0 0 25px rgba(16, 185, 129, 0.35);
   --cyber-violet: #8B5CF6;
   --cyber-amber: #F59E0B;
+  --cyber-amber-glow: 0 0 25px rgba(245, 158, 11, 0.35);
   --cyber-text-primary: #F8FAFC;
   --cyber-text-secondary: #94A3B8;
   --cyber-text-muted: #64748B;
-  --cyber-inner-box: rgba(15, 23, 42, 0.7);
-  --cyber-nav-bg: rgba(10, 13, 20, 0.88);
+  --cyber-inner-box: rgba(15, 23, 42, 0.75);
+  --cyber-nav-bg: rgba(11, 15, 25, 0.85);
 }
 
-/* Light Theme Tokens (Modern Swiss/Linear Minimalist) */
+/* Light Theme Tokens */
 html[data-theme="light"] {
   --cyber-bg: #F8FAFC;
   --cyber-bg-surface: rgba(255, 255, 255, 0.95);
@@ -30,9 +34,13 @@ html[data-theme="light"] {
   --cyber-border-glow: rgba(0, 180, 216, 0.5);
   --cyber-cyan: #0284C7;
   --cyber-cyan-glow: 0 0 16px rgba(2, 132, 199, 0.25);
+  --cyber-magenta: #C026D3;
+  --cyber-magenta-glow: 0 0 16px rgba(192, 38, 211, 0.25);
   --cyber-emerald: #059669;
+  --cyber-emerald-glow: 0 0 16px rgba(5, 150, 105, 0.25);
   --cyber-violet: #7C3AED;
   --cyber-amber: #D97706;
+  --cyber-amber-glow: 0 0 16px rgba(217, 119, 6, 0.25);
   --cyber-text-primary: #0F172A;
   --cyber-text-secondary: #475569;
   --cyber-text-muted: #64748B;
@@ -53,49 +61,113 @@ html, body {
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-/* Monospace fonts for code & terminal */
 code, pre, .font-mono {
   font-family: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* Glassmorphism Card Utility */
+/* Vibrant Glassmorphism Card Utility */
 .glass-cyber-card {
   background: var(--cyber-bg-card) !important;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--cyber-border-subtle) !important;
-  border-radius: 14px !important;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.08);
-}
-
-html[data-theme="dark"] .glass-cyber-card {
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border-radius: 16px !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.2);
 }
 
 .glass-cyber-card:hover {
   border-color: var(--cyber-border-glow) !important;
   box-shadow: var(--cyber-cyan-glow);
-  transform: translateY(-2px);
+  transform: translateY(-4px);
 }
 
-/* Cyber Text Gradients */
+/* Visual Project Card with Image Banner */
+.project-card-visual {
+  background: var(--cyber-bg-card) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--cyber-border-subtle) !important;
+  border-radius: 20px !important;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.project-card-visual:hover {
+  border-color: rgba(0, 245, 255, 0.5) !important;
+  box-shadow: 0 12px 40px rgba(0, 245, 255, 0.25), 0 0 20px rgba(217, 70, 239, 0.2);
+  transform: translateY(-6px);
+}
+
+.project-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 210px;
+  overflow: hidden;
+  background-color: #0A0D14;
+}
+
+.project-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card-visual:hover .project-image-wrapper img {
+  transform: scale(1.06);
+}
+
+.project-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(11, 15, 25, 0.1) 0%, rgba(11, 15, 25, 0.85) 100%);
+  pointer-events: none;
+}
+
+/* Vibrant Text Gradients */
+.text-gradient-vibrant {
+  background: linear-gradient(135deg, #00F5FF 0%, #D946EF 50%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .text-gradient-cyan {
-  background: linear-gradient(135deg, var(--cyber-cyan) 0%, #3B82F6 100%);
+  background: linear-gradient(135deg, #00F5FF 0%, #3B82F6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-ai {
-  background: linear-gradient(135deg, #C084FC 0%, var(--cyber-violet) 50%, #3B82F6 100%);
+  background: linear-gradient(135deg, #D946EF 0%, #8B5CF6 50%, #3B82F6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-web3 {
-  background: linear-gradient(135deg, var(--cyber-cyan) 0%, var(--cyber-emerald) 100%);
+  background: linear-gradient(135deg, #00F5FF 0%, #10B981 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Glowing Aura & Animated Border */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(0, 245, 255, 0.4), 0 0 50px rgba(217, 70, 239, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(217, 70, 239, 0.5), 0 0 60px rgba(0, 245, 255, 0.3);
+  }
+}
+
+.hero-avatar-glow {
+  animation: pulseGlow 4s infinite ease-in-out;
 }
 
 /* Custom Scrollbar */
@@ -112,14 +184,4 @@ html[data-theme="dark"] .glass-cyber-card {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--cyber-border-glow);
-}
-
-/* Mobile-First Responsive Utilities */
-@media (max-width: 768px) {
-  .hide-on-mobile {
-    display: none !important;
-  }
-  .mobile-full-width {
-    width: 100% !important;
-  }
 }

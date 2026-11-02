@@ -4,18 +4,14 @@ import { PersonaProvider } from './context/PersonaContext';
 import { ParticleBackground } from './components/canvas/ParticleBackground';
 import { Navbar } from './components/navigation/Navbar';
 import { Hero } from './components/hero/Hero';
-import { ArchitectureModal } from './components/canvas/ArchitectureModal';
-import { SandboxesSection } from './components/sandboxes/SandboxesSection';
 import { ProjectGrid } from './components/projects/ProjectGrid';
-import { CredentialsSection } from './components/credentials/CredentialsSection';
-import { StoriesTimeline } from './components/stories/StoriesTimeline';
+import { SkillsSection } from './components/skills/SkillsSection';
 import { ContactSection } from './components/contact/ContactSection';
 import { Footer } from './components/navigation/Footer';
 import { RecruiterDrawer } from './components/recruiter/RecruiterDrawer';
 
 export default function App() {
   const [isRecruiterDrawerOpen, setIsRecruiterDrawerOpen] = useState(false);
-  const [isArchitectureModalOpen, setIsArchitectureModalOpen] = useState(false);
 
   return (
     <ThemeProvider>
@@ -24,49 +20,35 @@ export default function App() {
           {/* Dynamic 60fps Particle Mesh Canvas */}
           <ParticleBackground />
 
-          {/* Mobile-First Responsive Navigation Bar with Theme & Persona Controls */}
+          {/* Minimalist Glassmorphic Navigation Bar */}
           <Navbar
             onOpenRecruiterDrawer={() => setIsRecruiterDrawerOpen(true)}
-            onOpenArchitectureModal={() => setIsArchitectureModalOpen(true)}
           />
 
-          {/* Main Application Sections (Organized by 80/20 Impact) */}
+          {/* Streamlined Core Sections: Hero -> Projects -> Skills & Honors -> Contact */}
           <main style={{ position: 'relative', zIndex: 1 }}>
-            {/* 1. Hero: Portrait, Pitch, Actions, and Interactive 3D Core / Shell */}
+            {/* 1. Hero: Portrait with Animated Glow Ring, Punchy Pitch, and Quick CTAs */}
             <Hero
               onOpenRecruiterDrawer={() => setIsRecruiterDrawerOpen(true)}
-              onOpenArchitectureModal={() => setIsArchitectureModalOpen(true)}
             />
 
-            {/* 2. Top Impact (80%): In-Browser Proof-of-Work Sandboxes (Smart Contract & Agentic AI) */}
-            <SandboxesSection />
-
-            {/* 3. Featured Architecture Showcases */}
+            {/* 2. Visual-First Featured Projects with Real Screenshots & Deep-Dive Modals */}
             <ProjectGrid />
 
-            {/* 4. Academic Honors (100% Merit Scholarship) & Verified Certifications */}
-            <CredentialsSection />
+            {/* 3. Core Superpowers & NED University 100% Academic Merit Scholarship */}
+            <SkillsSection />
 
-            {/* 5. Day Stories & Industrial Field Visits */}
-            <StoriesTimeline />
-
-            {/* 6. Direct Contact & Transmission */}
+            {/* 4. High-Converting Direct Outreach & Transmission */}
             <ContactSection />
           </main>
 
-          {/* Global Footer */}
+          {/* Minimal Footer with Smooth Scroll-to-Top */}
           <Footer />
 
           {/* Recruiter Fast-Track Drawer */}
           <RecruiterDrawer
             isOpen={isRecruiterDrawerOpen}
             onClose={() => setIsRecruiterDrawerOpen(false)}
-          />
-
-          {/* Under the Hood: 3D Architecture Blueprint Modal (Visible only when user requests) */}
-          <ArchitectureModal
-            isOpen={isArchitectureModalOpen}
-            onClose={() => setIsArchitectureModalOpen(false)}
           />
         </div>
       </PersonaProvider>
